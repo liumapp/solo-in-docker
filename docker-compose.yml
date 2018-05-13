@@ -6,8 +6,8 @@ services:
     image: mysql:5.5.60
     restart: always
     volumes:
-      - ./mysql/data:/var/lib/mysql
-      - ./mysql/conf/mysqld.conf:/etc/mysql/mysql.conf.d/mysqld.cnf
+      - /Users/docker/mysql/data:/var/lib/mysql
+      - /Users/docker/mysql/conf/mysqld.conf:/etc/mysql/mysql.conf.d/mysqld.cnf
 
     ports:
       - "6603:3306"
