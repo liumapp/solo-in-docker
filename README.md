@@ -9,6 +9,8 @@ Make solo running in docker , also included mysql .
     
     * /Users/docker/mysql/conf
     
+    and make sure , they have write permission .     
+    
 * cp ./mysqld.conf to /Users/docker/mysql/conf
 
 * use 
