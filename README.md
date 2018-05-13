@@ -3,6 +3,8 @@ Make solo running in docker , also included mysql .
 
 ## how to use
 
+### config mysql 
+
 * mkdir 
 
     * /Users/docker/mysql/data
@@ -19,7 +21,8 @@ Make solo running in docker , also included mysql .
         
     to start mysql 
     
-* connect to mysql , and create solo database  , than move your frm files into it . 
+### start solo 
+
 
     
                  
