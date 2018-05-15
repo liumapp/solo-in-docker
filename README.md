@@ -5,7 +5,7 @@ Using docker-compose to make solo running in docker with nginx, tomcat and mysql
 
 * run "./build-image.sh" to pull mysql , nginx and tomcat image from hub.docker . 
 
-* enter solo folder , config your project . 
+* enter solo folder , config your project(maybe you do not need) . 
 
     than use "mvn clean install -Dmaven.test.skip=true" to generate a war file .
     
