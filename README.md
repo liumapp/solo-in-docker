@@ -3,26 +3,12 @@ Make solo running in docker , also included mysql .
 
 ## how to use
 
-### config mysql 
+* run ./build-image.sh to pull mysql , nginx and tomcat image from hub.docker . 
 
-* mkdir 
+* run docker-compose up -d to start up 
 
-    * /Users/docker/mysql/data
+* open your browser , and visit http://localhost/solo
     
-    * /Users/docker/mysql/conf
-    
-    and make sure , they have write permission .     
-    
-* cp ./mysqld.conf to /Users/docker/mysql/conf
-
-* use 
-
-        docker-compose up -d mysql
-        
-    to start mysql 
-    
-### start solo 
-
 
     
                  
