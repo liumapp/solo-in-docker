@@ -8,7 +8,6 @@ services:
     volumes:
       - ./mysql/data:/var/lib/mysql
       - ./mysql/conf/mysqld.conf:/etc/mysql/mysql.conf.d/mysqld.cnf
-
     ports:
       - "6603:3306"
     environment:
