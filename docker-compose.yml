@@ -38,7 +38,8 @@ services:
       - ./webapps/solo.war:/usr/local/tomcat/webapps/solo.war
       - ./conf/server.xml:/usr/local/tomcat/conf/server.xml
       - ./logs:/usr/local/tomcat/logs
-
+    links:
+      - mysql:m1
 
 
 

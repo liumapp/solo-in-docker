@@ -1,5 +1,5 @@
 # solo-in-docker
-Make solo running in docker with nginx, tomcat and mysql .
+Using docker-compose to make solo running in docker with nginx, tomcat and mysql .
 
 ## how to use
 
