@@ -17,6 +17,10 @@ Using docker-compose to make solo running in docker with nginx, tomcat and mysql
 
 * open your browser , and visit http://localhost/solo
     
+* and you can find something like this :
 
+    ![1.jpg](https://github.com/liumapp/solo-in-docker/blob/master/pic/1.jpg)
+    
+    ![2.jpg](https://github.com/liumapp/solo-in-docker/blob/master/pic/2.jpg)
     
                  
