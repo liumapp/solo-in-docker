@@ -19,6 +19,6 @@
 !src/main/webapp/skins/Medium
 
 src/main/webapp/markdowns/*
-!src/main/webapp/markdowns/README.md
+!src/main/webapp/markdowns/README.mdpwd
 
 .DS_Store
