@@ -1,5 +1,5 @@
 # solo-in-docker
-Make solo running in docker , also included mysql .
+Make solo running in docker with nginx, tomcat and mysql .
 
 ## how to use
 

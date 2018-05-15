@@ -16,5 +16,5 @@ docker pull mysql:5.5.60
 
 docker pull nginx:1.13
 
-docker pull tomcat:8.0
+docker pull tomcat:9.0
 
