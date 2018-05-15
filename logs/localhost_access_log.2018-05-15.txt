@@ -1,2 +1,10 @@
 127.0.0.1 - - [15/May/2018:08:34:02 +0000] "GET /solo/console/stat/onlineVisitorRefresh HTTP/1.1" 404 1123
 172.18.0.4 - - [15/May/2018:08:34:30 +0000] "GET /solo HTTP/1.0" 404 1077
+127.0.0.1 - - [15/May/2018:08:41:50 +0000] "GET /solo/console/stat/onlineVisitorRefresh HTTP/1.1" 200 7638
+172.18.0.4 - - [15/May/2018:08:41:50 +0000] "GET /solo HTTP/1.0" 200 7623
+172.18.0.1 - - [15/May/2018:08:41:50 +0000] "GET /solo/images/logo.png HTTP/1.1" 200 21600
+172.18.0.1 - - [15/May/2018:08:41:50 +0000] "GET /solo/css/default-init.css?1526373699720 HTTP/1.1" 200 9820
+172.18.0.1 - - [15/May/2018:08:41:50 +0000] "GET /solo/js/lib/jquery/jquery.min.js HTTP/1.1" 200 99760
+172.18.0.1 - - [15/May/2018:08:41:50 +0000] "GET /solo/favicon.png HTTP/1.1" 200 1420
+172.18.0.4 - - [15/May/2018:08:41:52 +0000] "GET / HTTP/1.0" 200 11228
+127.0.0.1 - - [15/May/2018:08:41:55 +0000] "GET /solo/blog/symphony/user HTTP/1.1" 200 7636
