@@ -9,3 +9,8 @@ WORKDIR /solo/target/solo
 EXPOSE 8080
 
 CMD ["/bin/sh", "-c", "java -cp WEB-INF/lib/*:WEB-INF/classes org.b3log.solo.Starter"]
+
+
+
+
+

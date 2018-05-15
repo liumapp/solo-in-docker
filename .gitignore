@@ -28,3 +28,7 @@ target
 
 .DS_Store
 
+docker-nginx-tomcat-server
+
+docker-mysql-demo
+
