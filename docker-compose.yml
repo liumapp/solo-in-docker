@@ -35,7 +35,7 @@ services:
       - 8080:8080
       - 8009:8009
     volumes:
-      - ./webapps/countuser-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/countuser-1.0-SNAPSHOT.war
+      - ./webapps/solo.war:/usr/local/tomcat/webapps/solo.war
       - ./conf/server.xml:/usr/local/tomcat/conf/server.xml
       - ./logs:/usr/local/tomcat/logs
 
