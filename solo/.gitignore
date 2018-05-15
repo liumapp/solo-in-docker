@@ -14,7 +14,7 @@
 !gulpfile.js
 !package.json
 
-src/main/webapp/skins/*
+!src/main/webapp/skins/*
 !src/main/webapp/skins/mobile
 !src/main/webapp/skins/Medium
 
