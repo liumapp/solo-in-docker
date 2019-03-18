@@ -37,20 +37,20 @@ docker-compose up mysql -d
 
 ````xml
 <Host name="localhost"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true">
-	<Value className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+    unpackWARs="true" autoDeploy="true">
+	<Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
 	       prefix="localhost_access_log" suffix=".txt"
 	       pattern="%h %l %u %t %r %s %b"/>
-	<Context path="solo" docBase="solo" reloadable="true"/>
+	<Context path="./solo" docBase="solo" reloadable="true"/>
 </Host>
 <Host name="liumapp.com"  appBase="webapps"
     unpackWARs="true" autoDeploy="true">
 	<Alias>www.liumapp.com</Alias>
-	<Value className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+	<Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
 	       prefix="localhost_access_log" suffix=".txt"
 	       pattern="%h %l %u %t %r %s %b"/>
-	<Context path="solo" docBase="solo" reloadable="true"/>
-</Host>     
+	<Context path="./solo" docBase="solo" reloadable="true"/>
+</Host>    
 ````
 
 将上面liumapp.com等字符替换成自己的域名即可
