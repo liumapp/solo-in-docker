@@ -83,11 +83,29 @@ docker-compose up -d
 
 不出意外就能看到solo的欢迎界面
 
-![3.png](https://github.com/liumapp/solo-in-docker/blob/master/pic/2.png?raw=true)
+![3.png](https://github.com/liumapp/solo-in-docker/blob/master/pic/3.png?raw=true)
+
+再来一张效果图
+
+![4.png](https://github.com/liumapp/solo-in-docker/blob/master/pic/4.png?raw=true)
+
+好，项目已经跑起来了，不过啥数据也没有，如果看官是第一次运行solo的话，那么看到这一步就可以了
+
+如果是像我一样，纯粹是喜欢solo的最新版本皮肤（我绝不是被小萝莉吸引过来的！）而更新，那么就需要把自己以前的数据导入一遍
 
 ## 拷贝数据
 
-新版本的solo:3.3.0，我也不知道里面的数据表有没有变动过，但是既然是从老版本升级到新版本，数据的迁移也肯定要搞的
+新版本的solo:3.3.0跟以往的老版本相比，我也不知道里面的数据表有没有变动过，但是既然是从老版本升级到新版本，数据的迁移也肯定要搞的（我这里是从solo:2.2.0更新到3.3.0）
+
+### 线上数据备份
+
+因为我自己的线上solo也是直接用的这个项目脚本跑起来的，所以备份很简单，登陆线上，把./mysql/data目录下的数据打包下载到本地就完成了
+
+如果看官是用的别的方式运行solo的，请自行备份数据库
+
+### 导入数据
+
+
 
 
 
