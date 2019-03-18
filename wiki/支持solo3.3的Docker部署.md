@@ -19,6 +19,8 @@ jdbc.URL=jdbc:mysql://mysql:3306/solo?useUnicode=yes&characterEncoding=UTF-8&use
 
 ### 启动mysql容器
 
+首先检查：mysql/data/目录下是否有solo这个文件夹，如果有的话则不需要走下面的配置
+
 通过docker-compose先单独启动mysql
 
 ````shell
@@ -35,25 +37,20 @@ docker-compose up mysql -d
 
 ````xml
 <Host name="localhost"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true"
-            xmlValidation="false" xmlNamespaceAware="false">
-        <Context path="ROOT" docBase="/ROOT"/>
-      </Host>
-      <Host name="localhost"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true"
-            xmlValidation="false" xmlNamespaceAware="false">
-        <Context path="" docBase="/solo"/>
-      </Host>
-      <Host name="*.liumapp.com"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true"
-            xmlValidation="false" xmlNamespaceAware="false">
-        <Context path="" docBase="/solo"/>
-      </Host>
-      <Host name="liumapp.com"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true"
-            xmlValidation="false" xmlNamespaceAware="false">
-        <Context path="" docBase="/solo"/>
-      </Host>       
+            unpackWARs="true" autoDeploy="true">
+	<Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+	       prefix="localhost_access_log" suffix=".txt"
+	       pattern="%h %l %u %t "%r" %s %b" />
+	<Context path="" docBase="solo" reloadable="true" />
+</Host>
+<Host name="liumapp.com"  appBase="webapps"
+    unpackWARs="true" autoDeploy="true">
+	<Alias>www.liumapp.com</Alias>
+	<Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+	       prefix="localhost_access_log" suffix=".txt"
+	       pattern="%h %l %u %t "%r" %s %b" />
+	<Context path="" docBase="solo" reloadable="true" />
+</Host>     
 ````
 
 将上面liumapp.com等字符替换成自己的域名即可
