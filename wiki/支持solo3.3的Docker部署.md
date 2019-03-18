@@ -23,4 +23,6 @@ cd solo
 
 mvn clean install -Dmaven.test.skip=true
 
+rm -rf ../webapps/solo.war
+
 
