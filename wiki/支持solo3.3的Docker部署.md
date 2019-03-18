@@ -40,16 +40,16 @@ docker-compose up mysql -d
             unpackWARs="true" autoDeploy="true">
 	<Value className="org.apache.catalina.valves.AccessLogValve" directory="logs"
 	       prefix="localhost_access_log" suffix=".txt"
-	       pattern="%h %l %u %t "%r" %s %b" />
-	<Context path="" docBase="solo" reloadable="true" />
+	       pattern="%h %l %u %t "%r" %s %b"/>
+	<Context path="" docBase="solo" reloadable="true"/>
 </Host>
 <Host name="liumapp.com"  appBase="webapps"
     unpackWARs="true" autoDeploy="true">
 	<Alias>www.liumapp.com</Alias>
 	<Value className="org.apache.catalina.valves.AccessLogValve" directory="logs"
 	       prefix="localhost_access_log" suffix=".txt"
-	       pattern="%h %l %u %t "%r" %s %b" />
-	<Context path="" docBase="solo" reloadable="true" />
+	       pattern="%h %l %u %t "%r" %s %b"/>
+	<Context path="" docBase="solo" reloadable="true"/>
 </Host>     
 ````
 
