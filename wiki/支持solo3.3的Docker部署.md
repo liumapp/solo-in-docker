@@ -19,10 +19,23 @@ jdbc.URL=jdbc:mysql://mysql:3306/solo?useUnicode=yes&characterEncoding=UTF-8&use
 
 ## 编译
 
+````shell
 cd solo
 
 mvn clean install -Dmaven.test.skip=true
 
 rm -rf ../webapps/solo.war
+````
 
+## 启动
+
+在项目根目录下依次执行
+
+````shell
+./build-image.sh
+
+docker-compose up -d
+````
+
+请注意，如果是在windows的环境下，请不要在gitbash等工具中使用，建议直接通过cmd输入命令，这样做的好处是： 在cmd下拉取docker的镜像，可以识别docker配置的其他源镜像地址
 
