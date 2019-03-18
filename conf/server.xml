@@ -121,8 +121,8 @@
       </Realm>
 
       <Host name="localhost"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true">
-
+            unpackWARs="true" autoDeploy="true"
+            xmlValidation="false" xmlNamespaceAware="false">
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->
         <!--
@@ -132,11 +132,26 @@
         <!-- Access log processes all example.
              Documentation at: /docs/config/valve.html
              Note: The pattern used is equivalent to using pattern="common" -->
-        <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+<!--         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                prefix="localhost_access_log" suffix=".txt"
-               pattern="%h %l %u %t &quot;%r&quot; %s %b" />
-        <Context path="" docBase="solo" reloadable="true"/>
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" /> -->
+        <Context path="ROOT" docBase="/ROOT"/>
       </Host>
+      <Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true"
+            xmlValidation="false" xmlNamespaceAware="false">
+        <Context path="" docBase="/solo"/>
+      </Host>
+      <Host name="*.liumapp.com"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true"
+            xmlValidation="false" xmlNamespaceAware="false">
+        <Context path="" docBase="/solo"/>
+      </Host>
+      <Host name="liumapp.com"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true"
+            xmlValidation="false" xmlNamespaceAware="false">
+        <Context path="" docBase="/solo"/>
+      </Host>        
     </Engine>
   </Service>
 </Server>

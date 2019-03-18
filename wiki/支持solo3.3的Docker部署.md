@@ -17,6 +17,47 @@ jdbc.driver=com.mysql.cj.jdbc.Driver
 jdbc.URL=jdbc:mysql://mysql:3306/solo?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
 ````
 
+### 启动mysql容器
+
+通过docker-compose先单独启动mysql
+
+````shell
+docker-compose up mysql -d
+````
+
+启动后，通过localhost:6603 root adminadmin 与mysql容器建立连接，并创建一个名为solo的数据库（不然直接启动的话，会报错：找不到solo数据库）
+
+## 配置tomcat
+ 
+直接编辑conf/server.xml文件
+
+如果您要将solo部署到线上服务器的话，只需要根据自己的域名进行调整即可：
+
+````xml
+<Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true"
+            xmlValidation="false" xmlNamespaceAware="false">
+        <Context path="ROOT" docBase="/ROOT"/>
+      </Host>
+      <Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true"
+            xmlValidation="false" xmlNamespaceAware="false">
+        <Context path="" docBase="/solo"/>
+      </Host>
+      <Host name="*.liumapp.com"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true"
+            xmlValidation="false" xmlNamespaceAware="false">
+        <Context path="" docBase="/solo"/>
+      </Host>
+      <Host name="liumapp.com"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true"
+            xmlValidation="false" xmlNamespaceAware="false">
+        <Context path="" docBase="/solo"/>
+      </Host>       
+````
+
+将上面liumapp.com等字符替换成自己的域名即可
+
 ## 编译
 
 ````shell
@@ -25,6 +66,8 @@ cd solo
 mvn clean install -Dmaven.test.skip=true
 
 rm -rf ../webapps/solo.war
+
+cp ./target/solo.war ../webapps/
 ````
 
 ## 启动
