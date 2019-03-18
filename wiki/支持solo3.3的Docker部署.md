@@ -29,7 +29,7 @@ docker-compose up mysql -d
 
 启动后，通过localhost:6603 root adminadmin 与mysql容器建立连接，并创建一个名为solo的数据库（不然直接启动的话，会报错：找不到solo数据库）
 
-## 配置tomcat
+### 配置tomcat
  
 直接编辑conf/server.xml文件
 
@@ -78,4 +78,16 @@ docker-compose up -d
 ````
 
 请注意，如果是在windows的环境下，请不要在gitbash等工具中使用，建议直接通过cmd输入命令，这样做的好处是： 在cmd下拉取docker的镜像，可以识别docker配置的其他源镜像地址
+
+等待10秒左右，在浏览器中访问 http://localhost/solo
+
+不出意外就能看到solo的欢迎界面
+
+![3.png](https://github.com/liumapp/solo-in-docker/blob/master/pic/2.png?raw=true)
+
+## 拷贝数据
+
+新版本的solo:3.3.0，我也不知道里面的数据表有没有变动过，但是既然是从老版本升级到新版本，数据的迁移也肯定要搞的
+
+
 
