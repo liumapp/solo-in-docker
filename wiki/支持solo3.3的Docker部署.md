@@ -17,7 +17,10 @@ jdbc.driver=com.mysql.cj.jdbc.Driver
 jdbc.URL=jdbc:mysql://mysql:3306/solo?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
 ````
 
+## 编译
 
+cd solo
 
+mvn clean install -Dmaven.test.skip=true
 
 

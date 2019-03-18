@@ -17,7 +17,7 @@ services:
     restart: always
     image: nginx:1.13
     ports:
-      - 80:80
+      - 80:801
       - 443:443
       - 5050:5050
       - 4040:4040
