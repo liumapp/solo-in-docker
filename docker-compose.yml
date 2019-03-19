@@ -12,19 +12,19 @@ services:
       - "6603:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=adminadmin
-  nginx:
-    container_name: nginx
-    restart: always
-    image: nginx:1.13
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./conf/vhosts:/etc/nginx/conf.d
-      - ./logs:/var/log/nginx
-      - ./www/:/var/www/
-    links:
-      - tomcat:t1
+  # nginx:
+  #   container_name: nginx
+  #   restart: always
+  #   image: nginx:1.13
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   volumes:
+  #     - ./conf/vhosts:/etc/nginx/conf.d
+  #     - ./logs:/var/log/nginx
+  #     - ./www/:/var/www/
+  #   links:
+  #     - tomcat:t1
   tomcat:
     container_name: tomcat
     restart: always
