@@ -59,7 +59,7 @@ public final class Starter {
     /**
      * Main.
      *
-     * @param args the specified arguments
+     * @param args the specified argumentsit
      * @throws java.lang.Exception if start failed
      */
     public static void main(final String[] args) throws Exception {
