@@ -30,7 +30,7 @@ services:
     restart: always
     image: tomcat:9.0
     ports:
-      - 8080:8080
+      - 80:80
       - 8009:8009
     volumes:
       - ./webapps/solo.war:/usr/local/tomcat/webapps/solo.war
