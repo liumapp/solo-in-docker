@@ -1,1 +1,0 @@
-nginx的www目录
