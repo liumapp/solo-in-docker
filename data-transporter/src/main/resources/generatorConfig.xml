@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <classPathEntry
+            location="/Users/suyu/.m2/repository/mysql/mysql-connector-java/5.1.43/mysql-connector-java-5.1.43.jar"/>
+
+    <context id="common-model" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection connectionURL="jdbc:mysql://rdsv45k6542skme03476.mysql.rds.aliyuncs.com:3306/sdk_emergency"
+                        driverClass="com.mysql.jdbc.Driver" password="HuLuWa110" userId="hlw197" />
+
+        <javaModelGenerator targetPackage="com.liumapp.emergency.server.logic.common.domain"
+                            targetProject="src/main/java" >
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mappers"
+                         targetProject="src/main/resources" >
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.liumapp.emergency.server.logic.common.mapper"
+                             targetProject="src/main/java" type="XMLMAPPER" >
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+
+        <table tableName="b3_solo_archivedate_article" domainObjectName="B3SoloArchivedateArticle"
+        enableCountByExample="true"
+        enableUpdateByExample="true"
+        enableDeleteByExample="true"
+        enableSelectByExample="true"
+        selectByExampleQueryId="true"
+        >
+            <property name="useActualColumnNames" value="true" />
+        </table>
+
+        <table tableName="b3_solo_archivedate_article" domainObjectName="B3SoloArchivedateArticle"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true"
+        >
+            <property name="useActualColumnNames" value="true" />
+        </table>
+
+    </context>
+</generatorConfiguration>
