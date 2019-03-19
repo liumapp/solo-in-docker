@@ -36,7 +36,11 @@ jdbc.URL=jdbc:mysql://localhost:3306/solo?useUnicode=yes&characterEncoding=UTF-8
 
 接下来授权GitHub登陆，步骤省略
 
-因为我们只关心文章和评论的数据迁移，所以先要了解最新版本的solo是如何处理文章和评论的逻辑
+因为我们只关心文章和评论的数据迁移，所以最终需要关心的表便是：tag_article（标签与文章的关联表）, tag（标签）, article, archivedate_article（文章创建日期）,comment
+
+其中最复杂的便是文章的处理逻辑
+
+先来了解最新版本的solo是如何处理文章和评论的逻辑
 
 ### 添加文章的流程
 
@@ -56,7 +60,30 @@ jdbc.URL=jdbc:mysql://localhost:3306/solo?useUnicode=yes&characterEncoding=UTF-8
 
 新版本的solo发布文章跟老版本最大的区别，在于新版本新增了一个articleImg1URL这个字段，里面存储的内容便是文章的封面图片url地址，我们老版本的文章并没有这条数据，所以需要动态生成它
 
-那么如何动态生成呢？其实很简单，将图片地址的时间日期改一个即可，具体代码看：
+那么如何动态生成呢？其实很简单，我们可以直接用solo中的这一段代码：
+
+````java
+public static String randImage() {
+    try {
+        final long min = DateUtils.parseDate("20171104", new String[]{"yyyyMMdd"}).getTime();
+        final long max = System.currentTimeMillis();
+        final long delta = max - min;
+        final long time = ThreadLocalRandom.current().nextLong(0, delta) + min;
+
+        return "https://img.hacpai.com/bing/" + DateFormatUtils.format(time, "yyyyMMdd") + ".jpg";
+    } catch (final Exception e) {
+        LOGGER.log(Level.ERROR, "Generates random image URL failed", e);
+
+        return "https://img.hacpai.com/bing/20171104.jpg";
+    }
+}
+
+返回的结果便是得到的图片地址，在这个值得基础上增加"?imageView2/1/w/768/h/432/interlace/1/q/100"便可
+
+最终得到得结果将是："https://img.hacpai.com/bing/20171204.jpg?imageView2/1/w/768/h/432/interlace/1/q/100"
+
+
+
 
 
 
