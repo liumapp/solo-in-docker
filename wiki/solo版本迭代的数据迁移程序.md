@@ -4,13 +4,17 @@
 
 ## 基本流程
 
-首先在MySQL中建立一个名为solo_old的数据库，然后再建立一个新版本的solo数据库（需要先创建一个空的名为solo的数据库，随后再启动solo，系统会自动创建需要的数据表），solo_old将会包含我们老版本的博客数据，而solo数据库则是新版本的solo自动创建的数据库
+首先把老版本的数据导出为sql文件，再利用这个项目： https://github.com/martindrapeau/csvjson-app 将sql转为json文件
 
-solo_old数据库截图如下：
+可能有人会问，solo本身不是已经提供了数据导出为json吗？为什么要这么折腾呢？
 
-solo数据库截图如下：
+回答：因为老版本的solo，比如2.2.0版本的，就不支持数据导出为json
 
-通过运行Java代码，我们先将老版本的solo_old数据导出为json格式，然后再根据新版本的solo数据库表结构，用代码来读取json文件，并批量插入各个表中，当然，因为每个版本的不同，在执行之前，我们肯定是要对代码做一些调整的，所以这个程序并不会具有非常高的通用性，但json的导入导出这一步还是较为通用的。
+然后通过data-transporter这个项目的代码，将json文件的数据根据新版本的逻辑插入数据库中（不同的solo版本需要使用不同的逻辑，到时候再去改吧...）
+
+附上sql转换为json的效果图：
+
+下载这个json文件后，保存到data-transport项目的resources目录下，假设它的名字为csvjson.json
 
 ## 在idea中调试最新代码
 
