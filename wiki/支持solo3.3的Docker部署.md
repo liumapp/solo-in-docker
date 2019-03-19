@@ -2,6 +2,24 @@
 
 > solo3.3 + mysql + tomcat + nginx 整套环境部署在Docker的脚本项目
 
+## 目录说明
+
+* conf
+
+* logs
+
+* mysql
+
+* pic
+
+* solo
+
+* webapps
+
+* wiki
+
+* www
+
 ## 配置solo
 
 ### 配置mysql
