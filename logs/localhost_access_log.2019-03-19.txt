@@ -53,3 +53,10 @@
 172.30.0.4 - - [19/Mar/2019:04:53:46 +0000] GET /solo/plugins/kanbanniang/assets/model/Potion-Maker/Pio/motions/WakeUp.mtn HTTP/1.0 200 7542
 172.30.0.4 - - [19/Mar/2019:04:53:46 +0000] GET /solo/manifest.json HTTP/1.0 200 977
 172.30.0.4 - - [19/Mar/2019:04:53:46 +0000] GET /solo/images/logo/logo@144.png HTTP/1.0 200 7557
+172.30.0.4 - - [19/Mar/2019:06:29:03 +0000] GET /solo/plugins/kanbanniang/assets/model/Potion-Maker/Pio/motions/Breath4.mtn HTTP/1.0 200 3329
+172.30.0.4 - - [19/Mar/2019:06:31:15 +0000] GET /solo/plugins/kanbanniang/assets/model/Potion-Maker/Pio/motions/Fail.mtn HTTP/1.0 200 8759
+172.30.0.4 - - [19/Mar/2019:06:31:17 +0000] GET /solo/plugins/kanbanniang/assets/model/Potion-Maker/Pio/motions/Success.mtn HTTP/1.0 200 4796
+172.30.0.4 - - [19/Mar/2019:06:31:19 +0000] GET /solo/plugins/kanbanniang/assets/model/Potion-Maker/Pio/motions/Breath2.mtn HTTP/1.0 200 2143
+172.30.0.4 - - [19/Mar/2019:06:33:16 +0000] GET /solo/plugins/kanbanniang/assets/model/Potion-Maker/Pio/motions/Breath%20Dere1.mtn HTTP/1.0 200 3749
+172.30.0.4 - - [19/Mar/2019:06:33:33 +0000] GET /solo/plugins/kanbanniang/assets/model/Potion-Maker/Pio/motions/Breath1.mtn HTTP/1.0 200 2238
+172.30.0.4 - - [19/Mar/2019:06:39:17 +0000] GET /solo/plugins/kanbanniang/assets/model/Potion-Maker/Pio/motions/Breath5.mtn HTTP/1.0 200 12530
