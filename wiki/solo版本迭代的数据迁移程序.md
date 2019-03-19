@@ -28,9 +28,27 @@ jdbc.URL=jdbc:mysql://localhost:3306/solo?useUnicode=yes&characterEncoding=UTF-8
 
 截图如下：
 
-启动后，授权GitHub登陆后，我们便能够在mysql数据库中，看到solo最新版本的数据库表结构已经生成成功
+用debug模式启动后，我们便能够在mysql数据库中，看到solo最新版本的数据库表结构已经生成成功
+
+接下来授权GitHub登陆，步骤省略
+
+因为我们只关心文章和评论的数据迁移，所以先要了解最新版本的solo是如何处理文章和评论的逻辑
+
+### 添加文章的流程
+
+首先进入管理后台，走一遍发起文章的流程
+
+因为最新版本的solo支持社区提供文章封面图片，所以我们可以在idea的console中看到这样一串提示：
+
+````shell
+[ERROR]-[2019-03-19 16:43:02]-[org.b3log.solo.util.Solos:211]: 如果你需要使用社区提供的图床，请将博客账号和社区账号的 B3 Key 设置成一致
+````
+
+那么不需要多解释了，去社区找到自己的b3log key，拷贝过来，打开本地数据库的b3_solo_user，插入userB3Key即可
 
 
+
+### 添加评论的流程
 
 
 
