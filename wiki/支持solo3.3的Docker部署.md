@@ -6,19 +6,62 @@
 
 * conf
 
+conf目录下包含了nginx和tomcat的配置文件，server.xml为tomcat的配置文件，每次修改该文件内容后，您需要重启tomcat容器
+
+重启tomcat命令如下：
+
+````shell
+docker-compose down tomcat
+docker-compose up -d tomcat
+````
+
+vhosts下的文件为nginx配置文件，建议您针对每一个域名的访问设立配置文件，比如为liumapp.com域名，则创建liumapp.conf配置文件，每次更新vhosts目录的文件需要您重启nginx
+
+重启nginx命令如下:
+
+````shell
+docker-compose down nginx
+docker-compose up -d nginx
+````
+
 * logs
+
+tomcat与nginx的日志存放目录，这里面有一些内容是我本地测试产生的，各位要用的话记得先清空一下
 
 * mysql
 
+mysql的配置文件与具体数据存放目录
+
+mysql/conf目录下的mysqld.conf为mysql的具体配置文件，修改该配置文件后需要重启mysql容器
+
+重启mysql命令如下：
+
+````shell
+docker-compose down mysql
+docker-compose up -d mysql
+````
+
+mysql/data目录下的文件与文件夹为mysql具体数据的存放目录，当您需要备份数据的时候，只需要将该目录的数据打包下载即可
+
 * pic
+
+这是我记录这个项目实际运行情况的一些图片 
 
 * solo
 
+solo:3.3.0版本的代码，包含了solo-skins项目
+
 * webapps
+
+tomcat运行时的webapps目录，对solo进行编译后，需要将solo.war复制到该目录下，同理，当您需要部署新的war项目时，将对应的war包复制到该目录，并编辑tomcat的配置文件server.xml即可
 
 * wiki
 
+记录该项目实际运行情况的博客文章
+
 * www
+
+nginx运行时的www目录
 
 ## 配置solo
 
@@ -35,7 +78,7 @@ jdbc.driver=com.mysql.cj.jdbc.Driver
 jdbc.URL=jdbc:mysql://mysql:3306/solo?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
 ````
 
-### 启动mysql容器
+### 配置mysql容器
 
 首先检查：mysql/data/目录下是否有solo这个文件夹，如果有的话则不需要走下面的配置
 
@@ -45,7 +88,7 @@ jdbc.URL=jdbc:mysql://mysql:3306/solo?useUnicode=yes&characterEncoding=UTF-8&use
 docker-compose up mysql -d
 ````
 
-启动后，通过localhost:6603 root adminadmin 与mysql容器建立连接，并创建一个名为solo的数据库（不然直接启动的话，会报错：找不到solo数据库）
+启动后，通过localhost:6603 root adminadmin 与mysql容器建立连接，并创建一个名为solo的数据库（不然直接启动整个项目的话，会报错：找不到solo数据库）
 
 ### 配置tomcat
  
