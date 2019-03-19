@@ -104,3 +104,11 @@
 192.168.48.1 - - [19/Mar/2019:07:12:06 +0000] GET /solo HTTP/1.1 200 20039
 192.168.48.1 - - [19/Mar/2019:07:12:06 +0000] GET /sw.js HTTP/1.1 404 1079
 192.168.48.1 - - [19/Mar/2019:07:12:06 +0000] GET /solo/plugins/kanbanniang/assets/model?t=1552979526587 HTTP/1.1 200 2080
+192.168.48.1 - - [19/Mar/2019:08:02:36 +0000] GET /solo HTTP/1.1 200 20039
+192.168.48.1 - - [19/Mar/2019:08:02:36 +0000] GET /sw.js HTTP/1.1 404 1079
+192.168.48.1 - - [19/Mar/2019:08:02:36 +0000] GET /solo/plugins/kanbanniang/assets/model?t=1552982556269 HTTP/1.1 200 1082
+192.168.48.1 - - [19/Mar/2019:08:02:36 +0000] GET /solo/plugins/kanbanniang/assets/model/bilibili-live/22/model.moc HTTP/1.1 200 188029
+192.168.48.1 - - [19/Mar/2019:08:02:36 +0000] GET /solo/plugins/kanbanniang/assets/model/bilibili-live/22/motions/idle-01.mtn HTTP/1.1 200 6707
+192.168.48.1 - - [19/Mar/2019:08:02:36 +0000] GET /solo/plugins/kanbanniang/assets/model/bilibili-live/22/motions/touch.mtn HTTP/1.1 200 3243
+192.168.48.1 - - [19/Mar/2019:08:02:36 +0000] GET /solo/plugins/kanbanniang/assets/model/bilibili-live/22/motions/idle-03.mtn HTTP/1.1 200 8065
+192.168.48.1 - - [19/Mar/2019:08:02:39 +0000] GET / HTTP/1.1 200 11286
