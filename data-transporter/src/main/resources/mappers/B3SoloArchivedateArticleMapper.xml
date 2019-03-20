@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liumapp.solo.transporter.mapper.B3SoloArchivedateArticleMapper">
+  <resultMap id="BaseResultMap" type="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticle">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="archiveDate_oId" jdbcType="VARCHAR" property="archiveDate_oId" />
+    <result column="article_oId" jdbcType="VARCHAR" property="article_oId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    oId, archiveDate_oId, article_oId
+  </sql>
+  <select id="selectByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from b3_solo_archivedate_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from b3_solo_archivedate_article
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from b3_solo_archivedate_article
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticleExample">
+    delete from b3_solo_archivedate_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticle">
+    insert into b3_solo_archivedate_article (oId, archiveDate_oId, article_oId
+      )
+    values (#{oId,jdbcType=VARCHAR}, #{archiveDate_oId,jdbcType=VARCHAR}, #{article_oId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticle">
+    insert into b3_solo_archivedate_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="archiveDate_oId != null">
+        archiveDate_oId,
+      </if>
+      <if test="article_oId != null">
+        article_oId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="archiveDate_oId != null">
+        #{archiveDate_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="article_oId != null">
+        #{article_oId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticleExample" resultType="java.lang.Long">
+    select count(*) from b3_solo_archivedate_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update b3_solo_archivedate_article
+    <set>
+      <if test="record.oId != null">
+        oId = #{record.oId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.archiveDate_oId != null">
+        archiveDate_oId = #{record.archiveDate_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.article_oId != null">
+        article_oId = #{record.article_oId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update b3_solo_archivedate_article
+    set oId = #{record.oId,jdbcType=VARCHAR},
+      archiveDate_oId = #{record.archiveDate_oId,jdbcType=VARCHAR},
+      article_oId = #{record.article_oId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticle">
+    update b3_solo_archivedate_article
+    <set>
+      <if test="archiveDate_oId != null">
+        archiveDate_oId = #{archiveDate_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="article_oId != null">
+        article_oId = #{article_oId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticle">
+    update b3_solo_archivedate_article
+    set archiveDate_oId = #{archiveDate_oId,jdbcType=VARCHAR},
+      article_oId = #{article_oId,jdbcType=VARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticle">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="archiveDate_oId" jdbcType="VARCHAR" property="archiveDate_oId" />
+    <result column="article_oId" jdbcType="VARCHAR" property="article_oId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    oId, archiveDate_oId, article_oId
+  </sql>
+  <select id="selectByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from b3_solo_archivedate_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from b3_solo_archivedate_article
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from b3_solo_archivedate_article
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticleExample">
+    delete from b3_solo_archivedate_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticle">
+    insert into b3_solo_archivedate_article (oId, archiveDate_oId, article_oId
+      )
+    values (#{oId,jdbcType=VARCHAR}, #{archiveDate_oId,jdbcType=VARCHAR}, #{article_oId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticle">
+    insert into b3_solo_archivedate_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="archiveDate_oId != null">
+        archiveDate_oId,
+      </if>
+      <if test="article_oId != null">
+        article_oId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="archiveDate_oId != null">
+        #{archiveDate_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="article_oId != null">
+        #{article_oId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticleExample" resultType="java.lang.Long">
+    select count(*) from b3_solo_archivedate_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update b3_solo_archivedate_article
+    <set>
+      <if test="record.oId != null">
+        oId = #{record.oId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.archiveDate_oId != null">
+        archiveDate_oId = #{record.archiveDate_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.article_oId != null">
+        article_oId = #{record.article_oId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update b3_solo_archivedate_article
+    set oId = #{record.oId,jdbcType=VARCHAR},
+      archiveDate_oId = #{record.archiveDate_oId,jdbcType=VARCHAR},
+      article_oId = #{record.article_oId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticle">
+    update b3_solo_archivedate_article
+    <set>
+      <if test="archiveDate_oId != null">
+        archiveDate_oId = #{archiveDate_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="article_oId != null">
+        article_oId = #{article_oId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liumapp.solo.transporter.domain.B3SoloArchivedateArticle">
+    update b3_solo_archivedate_article
+    set archiveDate_oId = #{archiveDate_oId,jdbcType=VARCHAR},
+      article_oId = #{article_oId,jdbcType=VARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>

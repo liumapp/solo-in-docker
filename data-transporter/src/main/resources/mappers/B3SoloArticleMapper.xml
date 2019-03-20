@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liumapp.solo.transporter.mapper.B3SoloArticleMapper">
+  <resultMap id="BaseResultMap" type="com.liumapp.solo.transporter.domain.B3SoloArticle">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="articleTitle" jdbcType="VARCHAR" property="articleTitle" />
+    <result column="articleAuthorEmail" jdbcType="VARCHAR" property="articleAuthorEmail" />
+    <result column="articleCommentCount" jdbcType="INTEGER" property="articleCommentCount" />
+    <result column="articleViewCount" jdbcType="INTEGER" property="articleViewCount" />
+    <result column="articlePermalink" jdbcType="VARCHAR" property="articlePermalink" />
+    <result column="articleHadBeenPublished" jdbcType="CHAR" property="articleHadBeenPublished" />
+    <result column="articleIsPublished" jdbcType="CHAR" property="articleIsPublished" />
+    <result column="articlePutTop" jdbcType="CHAR" property="articlePutTop" />
+    <result column="articleCreateDate" jdbcType="TIMESTAMP" property="articleCreateDate" />
+    <result column="articleUpdateDate" jdbcType="TIMESTAMP" property="articleUpdateDate" />
+    <result column="articleRandomDouble" jdbcType="DOUBLE" property="articleRandomDouble" />
+    <result column="articleSignId" jdbcType="VARCHAR" property="articleSignId" />
+    <result column="articleCommentable" jdbcType="CHAR" property="articleCommentable" />
+    <result column="articleViewPwd" jdbcType="VARCHAR" property="articleViewPwd" />
+    <result column="articleEditorType" jdbcType="VARCHAR" property="articleEditorType" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.liumapp.solo.transporter.domain.B3SoloArticleWithBLOBs">
+    <result column="articleAbstract" jdbcType="LONGVARCHAR" property="articleAbstract" />
+    <result column="articleTags" jdbcType="LONGVARCHAR" property="articleTags" />
+    <result column="articleContent" jdbcType="LONGVARCHAR" property="articleContent" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    oId, articleTitle, articleAuthorEmail, articleCommentCount, articleViewCount, articlePermalink, 
+    articleHadBeenPublished, articleIsPublished, articlePutTop, articleCreateDate, articleUpdateDate, 
+    articleRandomDouble, articleSignId, articleCommentable, articleViewPwd, articleEditorType
+  </sql>
+  <sql id="Blob_Column_List">
+    articleAbstract, articleTags, articleContent
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from b3_solo_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from b3_solo_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from b3_solo_article
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from b3_solo_article
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleExample">
+    delete from b3_solo_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleWithBLOBs">
+    insert into b3_solo_article (oId, articleTitle, articleAuthorEmail, 
+      articleCommentCount, articleViewCount, 
+      articlePermalink, articleHadBeenPublished, 
+      articleIsPublished, articlePutTop, articleCreateDate, 
+      articleUpdateDate, articleRandomDouble, 
+      articleSignId, articleCommentable, articleViewPwd, 
+      articleEditorType, articleAbstract, 
+      articleTags, articleContent)
+    values (#{oId,jdbcType=VARCHAR}, #{articleTitle,jdbcType=VARCHAR}, #{articleAuthorEmail,jdbcType=VARCHAR}, 
+      #{articleCommentCount,jdbcType=INTEGER}, #{articleViewCount,jdbcType=INTEGER}, 
+      #{articlePermalink,jdbcType=VARCHAR}, #{articleHadBeenPublished,jdbcType=CHAR}, 
+      #{articleIsPublished,jdbcType=CHAR}, #{articlePutTop,jdbcType=CHAR}, #{articleCreateDate,jdbcType=TIMESTAMP}, 
+      #{articleUpdateDate,jdbcType=TIMESTAMP}, #{articleRandomDouble,jdbcType=DOUBLE}, 
+      #{articleSignId,jdbcType=VARCHAR}, #{articleCommentable,jdbcType=CHAR}, #{articleViewPwd,jdbcType=VARCHAR}, 
+      #{articleEditorType,jdbcType=VARCHAR}, #{articleAbstract,jdbcType=LONGVARCHAR}, 
+      #{articleTags,jdbcType=LONGVARCHAR}, #{articleContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleWithBLOBs">
+    insert into b3_solo_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="articleTitle != null">
+        articleTitle,
+      </if>
+      <if test="articleAuthorEmail != null">
+        articleAuthorEmail,
+      </if>
+      <if test="articleCommentCount != null">
+        articleCommentCount,
+      </if>
+      <if test="articleViewCount != null">
+        articleViewCount,
+      </if>
+      <if test="articlePermalink != null">
+        articlePermalink,
+      </if>
+      <if test="articleHadBeenPublished != null">
+        articleHadBeenPublished,
+      </if>
+      <if test="articleIsPublished != null">
+        articleIsPublished,
+      </if>
+      <if test="articlePutTop != null">
+        articlePutTop,
+      </if>
+      <if test="articleCreateDate != null">
+        articleCreateDate,
+      </if>
+      <if test="articleUpdateDate != null">
+        articleUpdateDate,
+      </if>
+      <if test="articleRandomDouble != null">
+        articleRandomDouble,
+      </if>
+      <if test="articleSignId != null">
+        articleSignId,
+      </if>
+      <if test="articleCommentable != null">
+        articleCommentable,
+      </if>
+      <if test="articleViewPwd != null">
+        articleViewPwd,
+      </if>
+      <if test="articleEditorType != null">
+        articleEditorType,
+      </if>
+      <if test="articleAbstract != null">
+        articleAbstract,
+      </if>
+      <if test="articleTags != null">
+        articleTags,
+      </if>
+      <if test="articleContent != null">
+        articleContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleTitle != null">
+        #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleAuthorEmail != null">
+        #{articleAuthorEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="articleCommentCount != null">
+        #{articleCommentCount,jdbcType=INTEGER},
+      </if>
+      <if test="articleViewCount != null">
+        #{articleViewCount,jdbcType=INTEGER},
+      </if>
+      <if test="articlePermalink != null">
+        #{articlePermalink,jdbcType=VARCHAR},
+      </if>
+      <if test="articleHadBeenPublished != null">
+        #{articleHadBeenPublished,jdbcType=CHAR},
+      </if>
+      <if test="articleIsPublished != null">
+        #{articleIsPublished,jdbcType=CHAR},
+      </if>
+      <if test="articlePutTop != null">
+        #{articlePutTop,jdbcType=CHAR},
+      </if>
+      <if test="articleCreateDate != null">
+        #{articleCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleUpdateDate != null">
+        #{articleUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleRandomDouble != null">
+        #{articleRandomDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="articleSignId != null">
+        #{articleSignId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleCommentable != null">
+        #{articleCommentable,jdbcType=CHAR},
+      </if>
+      <if test="articleViewPwd != null">
+        #{articleViewPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="articleEditorType != null">
+        #{articleEditorType,jdbcType=VARCHAR},
+      </if>
+      <if test="articleAbstract != null">
+        #{articleAbstract,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="articleTags != null">
+        #{articleTags,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="articleContent != null">
+        #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleExample" resultType="java.lang.Long">
+    select count(*) from b3_solo_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update b3_solo_article
+    <set>
+      <if test="record.oId != null">
+        oId = #{record.oId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleTitle != null">
+        articleTitle = #{record.articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleAuthorEmail != null">
+        articleAuthorEmail = #{record.articleAuthorEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleCommentCount != null">
+        articleCommentCount = #{record.articleCommentCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.articleViewCount != null">
+        articleViewCount = #{record.articleViewCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.articlePermalink != null">
+        articlePermalink = #{record.articlePermalink,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleHadBeenPublished != null">
+        articleHadBeenPublished = #{record.articleHadBeenPublished,jdbcType=CHAR},
+      </if>
+      <if test="record.articleIsPublished != null">
+        articleIsPublished = #{record.articleIsPublished,jdbcType=CHAR},
+      </if>
+      <if test="record.articlePutTop != null">
+        articlePutTop = #{record.articlePutTop,jdbcType=CHAR},
+      </if>
+      <if test="record.articleCreateDate != null">
+        articleCreateDate = #{record.articleCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.articleUpdateDate != null">
+        articleUpdateDate = #{record.articleUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.articleRandomDouble != null">
+        articleRandomDouble = #{record.articleRandomDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="record.articleSignId != null">
+        articleSignId = #{record.articleSignId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleCommentable != null">
+        articleCommentable = #{record.articleCommentable,jdbcType=CHAR},
+      </if>
+      <if test="record.articleViewPwd != null">
+        articleViewPwd = #{record.articleViewPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleEditorType != null">
+        articleEditorType = #{record.articleEditorType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleAbstract != null">
+        articleAbstract = #{record.articleAbstract,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.articleTags != null">
+        articleTags = #{record.articleTags,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.articleContent != null">
+        articleContent = #{record.articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update b3_solo_article
+    set oId = #{record.oId,jdbcType=VARCHAR},
+      articleTitle = #{record.articleTitle,jdbcType=VARCHAR},
+      articleAuthorEmail = #{record.articleAuthorEmail,jdbcType=VARCHAR},
+      articleCommentCount = #{record.articleCommentCount,jdbcType=INTEGER},
+      articleViewCount = #{record.articleViewCount,jdbcType=INTEGER},
+      articlePermalink = #{record.articlePermalink,jdbcType=VARCHAR},
+      articleHadBeenPublished = #{record.articleHadBeenPublished,jdbcType=CHAR},
+      articleIsPublished = #{record.articleIsPublished,jdbcType=CHAR},
+      articlePutTop = #{record.articlePutTop,jdbcType=CHAR},
+      articleCreateDate = #{record.articleCreateDate,jdbcType=TIMESTAMP},
+      articleUpdateDate = #{record.articleUpdateDate,jdbcType=TIMESTAMP},
+      articleRandomDouble = #{record.articleRandomDouble,jdbcType=DOUBLE},
+      articleSignId = #{record.articleSignId,jdbcType=VARCHAR},
+      articleCommentable = #{record.articleCommentable,jdbcType=CHAR},
+      articleViewPwd = #{record.articleViewPwd,jdbcType=VARCHAR},
+      articleEditorType = #{record.articleEditorType,jdbcType=VARCHAR},
+      articleAbstract = #{record.articleAbstract,jdbcType=LONGVARCHAR},
+      articleTags = #{record.articleTags,jdbcType=LONGVARCHAR},
+      articleContent = #{record.articleContent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update b3_solo_article
+    set oId = #{record.oId,jdbcType=VARCHAR},
+      articleTitle = #{record.articleTitle,jdbcType=VARCHAR},
+      articleAuthorEmail = #{record.articleAuthorEmail,jdbcType=VARCHAR},
+      articleCommentCount = #{record.articleCommentCount,jdbcType=INTEGER},
+      articleViewCount = #{record.articleViewCount,jdbcType=INTEGER},
+      articlePermalink = #{record.articlePermalink,jdbcType=VARCHAR},
+      articleHadBeenPublished = #{record.articleHadBeenPublished,jdbcType=CHAR},
+      articleIsPublished = #{record.articleIsPublished,jdbcType=CHAR},
+      articlePutTop = #{record.articlePutTop,jdbcType=CHAR},
+      articleCreateDate = #{record.articleCreateDate,jdbcType=TIMESTAMP},
+      articleUpdateDate = #{record.articleUpdateDate,jdbcType=TIMESTAMP},
+      articleRandomDouble = #{record.articleRandomDouble,jdbcType=DOUBLE},
+      articleSignId = #{record.articleSignId,jdbcType=VARCHAR},
+      articleCommentable = #{record.articleCommentable,jdbcType=CHAR},
+      articleViewPwd = #{record.articleViewPwd,jdbcType=VARCHAR},
+      articleEditorType = #{record.articleEditorType,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleWithBLOBs">
+    update b3_solo_article
+    <set>
+      <if test="articleTitle != null">
+        articleTitle = #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleAuthorEmail != null">
+        articleAuthorEmail = #{articleAuthorEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="articleCommentCount != null">
+        articleCommentCount = #{articleCommentCount,jdbcType=INTEGER},
+      </if>
+      <if test="articleViewCount != null">
+        articleViewCount = #{articleViewCount,jdbcType=INTEGER},
+      </if>
+      <if test="articlePermalink != null">
+        articlePermalink = #{articlePermalink,jdbcType=VARCHAR},
+      </if>
+      <if test="articleHadBeenPublished != null">
+        articleHadBeenPublished = #{articleHadBeenPublished,jdbcType=CHAR},
+      </if>
+      <if test="articleIsPublished != null">
+        articleIsPublished = #{articleIsPublished,jdbcType=CHAR},
+      </if>
+      <if test="articlePutTop != null">
+        articlePutTop = #{articlePutTop,jdbcType=CHAR},
+      </if>
+      <if test="articleCreateDate != null">
+        articleCreateDate = #{articleCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleUpdateDate != null">
+        articleUpdateDate = #{articleUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleRandomDouble != null">
+        articleRandomDouble = #{articleRandomDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="articleSignId != null">
+        articleSignId = #{articleSignId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleCommentable != null">
+        articleCommentable = #{articleCommentable,jdbcType=CHAR},
+      </if>
+      <if test="articleViewPwd != null">
+        articleViewPwd = #{articleViewPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="articleEditorType != null">
+        articleEditorType = #{articleEditorType,jdbcType=VARCHAR},
+      </if>
+      <if test="articleAbstract != null">
+        articleAbstract = #{articleAbstract,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="articleTags != null">
+        articleTags = #{articleTags,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="articleContent != null">
+        articleContent = #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleWithBLOBs">
+    update b3_solo_article
+    set articleTitle = #{articleTitle,jdbcType=VARCHAR},
+      articleAuthorEmail = #{articleAuthorEmail,jdbcType=VARCHAR},
+      articleCommentCount = #{articleCommentCount,jdbcType=INTEGER},
+      articleViewCount = #{articleViewCount,jdbcType=INTEGER},
+      articlePermalink = #{articlePermalink,jdbcType=VARCHAR},
+      articleHadBeenPublished = #{articleHadBeenPublished,jdbcType=CHAR},
+      articleIsPublished = #{articleIsPublished,jdbcType=CHAR},
+      articlePutTop = #{articlePutTop,jdbcType=CHAR},
+      articleCreateDate = #{articleCreateDate,jdbcType=TIMESTAMP},
+      articleUpdateDate = #{articleUpdateDate,jdbcType=TIMESTAMP},
+      articleRandomDouble = #{articleRandomDouble,jdbcType=DOUBLE},
+      articleSignId = #{articleSignId,jdbcType=VARCHAR},
+      articleCommentable = #{articleCommentable,jdbcType=CHAR},
+      articleViewPwd = #{articleViewPwd,jdbcType=VARCHAR},
+      articleEditorType = #{articleEditorType,jdbcType=VARCHAR},
+      articleAbstract = #{articleAbstract,jdbcType=LONGVARCHAR},
+      articleTags = #{articleTags,jdbcType=LONGVARCHAR},
+      articleContent = #{articleContent,jdbcType=LONGVARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticle">
+    update b3_solo_article
+    set articleTitle = #{articleTitle,jdbcType=VARCHAR},
+      articleAuthorEmail = #{articleAuthorEmail,jdbcType=VARCHAR},
+      articleCommentCount = #{articleCommentCount,jdbcType=INTEGER},
+      articleViewCount = #{articleViewCount,jdbcType=INTEGER},
+      articlePermalink = #{articlePermalink,jdbcType=VARCHAR},
+      articleHadBeenPublished = #{articleHadBeenPublished,jdbcType=CHAR},
+      articleIsPublished = #{articleIsPublished,jdbcType=CHAR},
+      articlePutTop = #{articlePutTop,jdbcType=CHAR},
+      articleCreateDate = #{articleCreateDate,jdbcType=TIMESTAMP},
+      articleUpdateDate = #{articleUpdateDate,jdbcType=TIMESTAMP},
+      articleRandomDouble = #{articleRandomDouble,jdbcType=DOUBLE},
+      articleSignId = #{articleSignId,jdbcType=VARCHAR},
+      articleCommentable = #{articleCommentable,jdbcType=CHAR},
+      articleViewPwd = #{articleViewPwd,jdbcType=VARCHAR},
+      articleEditorType = #{articleEditorType,jdbcType=VARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.liumapp.solo.transporter.domain.B3SoloArticle">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="articleTitle" jdbcType="VARCHAR" property="articleTitle" />
+    <result column="articleAuthorId" jdbcType="VARCHAR" property="articleAuthorId" />
+    <result column="articleCommentCount" jdbcType="INTEGER" property="articleCommentCount" />
+    <result column="articleViewCount" jdbcType="INTEGER" property="articleViewCount" />
+    <result column="articlePermalink" jdbcType="VARCHAR" property="articlePermalink" />
+    <result column="articlePutTop" jdbcType="CHAR" property="articlePutTop" />
+    <result column="articleCreated" jdbcType="BIGINT" property="articleCreated" />
+    <result column="articleUpdated" jdbcType="BIGINT" property="articleUpdated" />
+    <result column="articleRandomDouble" jdbcType="DOUBLE" property="articleRandomDouble" />
+    <result column="articleSignId" jdbcType="VARCHAR" property="articleSignId" />
+    <result column="articleCommentable" jdbcType="CHAR" property="articleCommentable" />
+    <result column="articleViewPwd" jdbcType="VARCHAR" property="articleViewPwd" />
+    <result column="articleImg1URL" jdbcType="VARCHAR" property="articleImg1URL" />
+    <result column="articleStatus" jdbcType="INTEGER" property="articleStatus" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.liumapp.solo.transporter.domain.B3SoloArticleWithBLOBs">
+    <result column="articleAbstract" jdbcType="LONGVARCHAR" property="articleAbstract" />
+    <result column="articleAbstractText" jdbcType="LONGVARCHAR" property="articleAbstractText" />
+    <result column="articleTags" jdbcType="LONGVARCHAR" property="articleTags" />
+    <result column="articleContent" jdbcType="LONGVARCHAR" property="articleContent" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    oId, articleTitle, articleAuthorId, articleCommentCount, articleViewCount, articlePermalink, 
+    articlePutTop, articleCreated, articleUpdated, articleRandomDouble, articleSignId, 
+    articleCommentable, articleViewPwd, articleImg1URL, articleStatus
+  </sql>
+  <sql id="Blob_Column_List">
+    articleAbstract, articleAbstractText, articleTags, articleContent
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from b3_solo_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from b3_solo_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from b3_solo_article
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from b3_solo_article
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleExample">
+    delete from b3_solo_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleWithBLOBs">
+    insert into b3_solo_article (oId, articleTitle, articleAuthorId, 
+      articleCommentCount, articleViewCount, 
+      articlePermalink, articlePutTop, articleCreated, 
+      articleUpdated, articleRandomDouble, articleSignId, 
+      articleCommentable, articleViewPwd, articleImg1URL, 
+      articleStatus, articleAbstract, articleAbstractText, 
+      articleTags, articleContent)
+    values (#{oId,jdbcType=VARCHAR}, #{articleTitle,jdbcType=VARCHAR}, #{articleAuthorId,jdbcType=VARCHAR}, 
+      #{articleCommentCount,jdbcType=INTEGER}, #{articleViewCount,jdbcType=INTEGER}, 
+      #{articlePermalink,jdbcType=VARCHAR}, #{articlePutTop,jdbcType=CHAR}, #{articleCreated,jdbcType=BIGINT}, 
+      #{articleUpdated,jdbcType=BIGINT}, #{articleRandomDouble,jdbcType=DOUBLE}, #{articleSignId,jdbcType=VARCHAR}, 
+      #{articleCommentable,jdbcType=CHAR}, #{articleViewPwd,jdbcType=VARCHAR}, #{articleImg1URL,jdbcType=VARCHAR}, 
+      #{articleStatus,jdbcType=INTEGER}, #{articleAbstract,jdbcType=LONGVARCHAR}, #{articleAbstractText,jdbcType=LONGVARCHAR}, 
+      #{articleTags,jdbcType=LONGVARCHAR}, #{articleContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleWithBLOBs">
+    insert into b3_solo_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="articleTitle != null">
+        articleTitle,
+      </if>
+      <if test="articleAuthorId != null">
+        articleAuthorId,
+      </if>
+      <if test="articleCommentCount != null">
+        articleCommentCount,
+      </if>
+      <if test="articleViewCount != null">
+        articleViewCount,
+      </if>
+      <if test="articlePermalink != null">
+        articlePermalink,
+      </if>
+      <if test="articlePutTop != null">
+        articlePutTop,
+      </if>
+      <if test="articleCreated != null">
+        articleCreated,
+      </if>
+      <if test="articleUpdated != null">
+        articleUpdated,
+      </if>
+      <if test="articleRandomDouble != null">
+        articleRandomDouble,
+      </if>
+      <if test="articleSignId != null">
+        articleSignId,
+      </if>
+      <if test="articleCommentable != null">
+        articleCommentable,
+      </if>
+      <if test="articleViewPwd != null">
+        articleViewPwd,
+      </if>
+      <if test="articleImg1URL != null">
+        articleImg1URL,
+      </if>
+      <if test="articleStatus != null">
+        articleStatus,
+      </if>
+      <if test="articleAbstract != null">
+        articleAbstract,
+      </if>
+      <if test="articleAbstractText != null">
+        articleAbstractText,
+      </if>
+      <if test="articleTags != null">
+        articleTags,
+      </if>
+      <if test="articleContent != null">
+        articleContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleTitle != null">
+        #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleAuthorId != null">
+        #{articleAuthorId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleCommentCount != null">
+        #{articleCommentCount,jdbcType=INTEGER},
+      </if>
+      <if test="articleViewCount != null">
+        #{articleViewCount,jdbcType=INTEGER},
+      </if>
+      <if test="articlePermalink != null">
+        #{articlePermalink,jdbcType=VARCHAR},
+      </if>
+      <if test="articlePutTop != null">
+        #{articlePutTop,jdbcType=CHAR},
+      </if>
+      <if test="articleCreated != null">
+        #{articleCreated,jdbcType=BIGINT},
+      </if>
+      <if test="articleUpdated != null">
+        #{articleUpdated,jdbcType=BIGINT},
+      </if>
+      <if test="articleRandomDouble != null">
+        #{articleRandomDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="articleSignId != null">
+        #{articleSignId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleCommentable != null">
+        #{articleCommentable,jdbcType=CHAR},
+      </if>
+      <if test="articleViewPwd != null">
+        #{articleViewPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="articleImg1URL != null">
+        #{articleImg1URL,jdbcType=VARCHAR},
+      </if>
+      <if test="articleStatus != null">
+        #{articleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="articleAbstract != null">
+        #{articleAbstract,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="articleAbstractText != null">
+        #{articleAbstractText,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="articleTags != null">
+        #{articleTags,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="articleContent != null">
+        #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleExample" resultType="java.lang.Long">
+    select count(*) from b3_solo_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update b3_solo_article
+    <set>
+      <if test="record.oId != null">
+        oId = #{record.oId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleTitle != null">
+        articleTitle = #{record.articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleAuthorId != null">
+        articleAuthorId = #{record.articleAuthorId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleCommentCount != null">
+        articleCommentCount = #{record.articleCommentCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.articleViewCount != null">
+        articleViewCount = #{record.articleViewCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.articlePermalink != null">
+        articlePermalink = #{record.articlePermalink,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articlePutTop != null">
+        articlePutTop = #{record.articlePutTop,jdbcType=CHAR},
+      </if>
+      <if test="record.articleCreated != null">
+        articleCreated = #{record.articleCreated,jdbcType=BIGINT},
+      </if>
+      <if test="record.articleUpdated != null">
+        articleUpdated = #{record.articleUpdated,jdbcType=BIGINT},
+      </if>
+      <if test="record.articleRandomDouble != null">
+        articleRandomDouble = #{record.articleRandomDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="record.articleSignId != null">
+        articleSignId = #{record.articleSignId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleCommentable != null">
+        articleCommentable = #{record.articleCommentable,jdbcType=CHAR},
+      </if>
+      <if test="record.articleViewPwd != null">
+        articleViewPwd = #{record.articleViewPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleImg1URL != null">
+        articleImg1URL = #{record.articleImg1URL,jdbcType=VARCHAR},
+      </if>
+      <if test="record.articleStatus != null">
+        articleStatus = #{record.articleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.articleAbstract != null">
+        articleAbstract = #{record.articleAbstract,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.articleAbstractText != null">
+        articleAbstractText = #{record.articleAbstractText,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.articleTags != null">
+        articleTags = #{record.articleTags,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.articleContent != null">
+        articleContent = #{record.articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update b3_solo_article
+    set oId = #{record.oId,jdbcType=VARCHAR},
+      articleTitle = #{record.articleTitle,jdbcType=VARCHAR},
+      articleAuthorId = #{record.articleAuthorId,jdbcType=VARCHAR},
+      articleCommentCount = #{record.articleCommentCount,jdbcType=INTEGER},
+      articleViewCount = #{record.articleViewCount,jdbcType=INTEGER},
+      articlePermalink = #{record.articlePermalink,jdbcType=VARCHAR},
+      articlePutTop = #{record.articlePutTop,jdbcType=CHAR},
+      articleCreated = #{record.articleCreated,jdbcType=BIGINT},
+      articleUpdated = #{record.articleUpdated,jdbcType=BIGINT},
+      articleRandomDouble = #{record.articleRandomDouble,jdbcType=DOUBLE},
+      articleSignId = #{record.articleSignId,jdbcType=VARCHAR},
+      articleCommentable = #{record.articleCommentable,jdbcType=CHAR},
+      articleViewPwd = #{record.articleViewPwd,jdbcType=VARCHAR},
+      articleImg1URL = #{record.articleImg1URL,jdbcType=VARCHAR},
+      articleStatus = #{record.articleStatus,jdbcType=INTEGER},
+      articleAbstract = #{record.articleAbstract,jdbcType=LONGVARCHAR},
+      articleAbstractText = #{record.articleAbstractText,jdbcType=LONGVARCHAR},
+      articleTags = #{record.articleTags,jdbcType=LONGVARCHAR},
+      articleContent = #{record.articleContent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update b3_solo_article
+    set oId = #{record.oId,jdbcType=VARCHAR},
+      articleTitle = #{record.articleTitle,jdbcType=VARCHAR},
+      articleAuthorId = #{record.articleAuthorId,jdbcType=VARCHAR},
+      articleCommentCount = #{record.articleCommentCount,jdbcType=INTEGER},
+      articleViewCount = #{record.articleViewCount,jdbcType=INTEGER},
+      articlePermalink = #{record.articlePermalink,jdbcType=VARCHAR},
+      articlePutTop = #{record.articlePutTop,jdbcType=CHAR},
+      articleCreated = #{record.articleCreated,jdbcType=BIGINT},
+      articleUpdated = #{record.articleUpdated,jdbcType=BIGINT},
+      articleRandomDouble = #{record.articleRandomDouble,jdbcType=DOUBLE},
+      articleSignId = #{record.articleSignId,jdbcType=VARCHAR},
+      articleCommentable = #{record.articleCommentable,jdbcType=CHAR},
+      articleViewPwd = #{record.articleViewPwd,jdbcType=VARCHAR},
+      articleImg1URL = #{record.articleImg1URL,jdbcType=VARCHAR},
+      articleStatus = #{record.articleStatus,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleWithBLOBs">
+    update b3_solo_article
+    <set>
+      <if test="articleTitle != null">
+        articleTitle = #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleAuthorId != null">
+        articleAuthorId = #{articleAuthorId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleCommentCount != null">
+        articleCommentCount = #{articleCommentCount,jdbcType=INTEGER},
+      </if>
+      <if test="articleViewCount != null">
+        articleViewCount = #{articleViewCount,jdbcType=INTEGER},
+      </if>
+      <if test="articlePermalink != null">
+        articlePermalink = #{articlePermalink,jdbcType=VARCHAR},
+      </if>
+      <if test="articlePutTop != null">
+        articlePutTop = #{articlePutTop,jdbcType=CHAR},
+      </if>
+      <if test="articleCreated != null">
+        articleCreated = #{articleCreated,jdbcType=BIGINT},
+      </if>
+      <if test="articleUpdated != null">
+        articleUpdated = #{articleUpdated,jdbcType=BIGINT},
+      </if>
+      <if test="articleRandomDouble != null">
+        articleRandomDouble = #{articleRandomDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="articleSignId != null">
+        articleSignId = #{articleSignId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleCommentable != null">
+        articleCommentable = #{articleCommentable,jdbcType=CHAR},
+      </if>
+      <if test="articleViewPwd != null">
+        articleViewPwd = #{articleViewPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="articleImg1URL != null">
+        articleImg1URL = #{articleImg1URL,jdbcType=VARCHAR},
+      </if>
+      <if test="articleStatus != null">
+        articleStatus = #{articleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="articleAbstract != null">
+        articleAbstract = #{articleAbstract,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="articleAbstractText != null">
+        articleAbstractText = #{articleAbstractText,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="articleTags != null">
+        articleTags = #{articleTags,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="articleContent != null">
+        articleContent = #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticleWithBLOBs">
+    update b3_solo_article
+    set articleTitle = #{articleTitle,jdbcType=VARCHAR},
+      articleAuthorId = #{articleAuthorId,jdbcType=VARCHAR},
+      articleCommentCount = #{articleCommentCount,jdbcType=INTEGER},
+      articleViewCount = #{articleViewCount,jdbcType=INTEGER},
+      articlePermalink = #{articlePermalink,jdbcType=VARCHAR},
+      articlePutTop = #{articlePutTop,jdbcType=CHAR},
+      articleCreated = #{articleCreated,jdbcType=BIGINT},
+      articleUpdated = #{articleUpdated,jdbcType=BIGINT},
+      articleRandomDouble = #{articleRandomDouble,jdbcType=DOUBLE},
+      articleSignId = #{articleSignId,jdbcType=VARCHAR},
+      articleCommentable = #{articleCommentable,jdbcType=CHAR},
+      articleViewPwd = #{articleViewPwd,jdbcType=VARCHAR},
+      articleImg1URL = #{articleImg1URL,jdbcType=VARCHAR},
+      articleStatus = #{articleStatus,jdbcType=INTEGER},
+      articleAbstract = #{articleAbstract,jdbcType=LONGVARCHAR},
+      articleAbstractText = #{articleAbstractText,jdbcType=LONGVARCHAR},
+      articleTags = #{articleTags,jdbcType=LONGVARCHAR},
+      articleContent = #{articleContent,jdbcType=LONGVARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liumapp.solo.transporter.domain.B3SoloArticle">
+    update b3_solo_article
+    set articleTitle = #{articleTitle,jdbcType=VARCHAR},
+      articleAuthorId = #{articleAuthorId,jdbcType=VARCHAR},
+      articleCommentCount = #{articleCommentCount,jdbcType=INTEGER},
+      articleViewCount = #{articleViewCount,jdbcType=INTEGER},
+      articlePermalink = #{articlePermalink,jdbcType=VARCHAR},
+      articlePutTop = #{articlePutTop,jdbcType=CHAR},
+      articleCreated = #{articleCreated,jdbcType=BIGINT},
+      articleUpdated = #{articleUpdated,jdbcType=BIGINT},
+      articleRandomDouble = #{articleRandomDouble,jdbcType=DOUBLE},
+      articleSignId = #{articleSignId,jdbcType=VARCHAR},
+      articleCommentable = #{articleCommentable,jdbcType=CHAR},
+      articleViewPwd = #{articleViewPwd,jdbcType=VARCHAR},
+      articleImg1URL = #{articleImg1URL,jdbcType=VARCHAR},
+      articleStatus = #{articleStatus,jdbcType=INTEGER}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>

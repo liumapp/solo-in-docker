@@ -3,7 +3,7 @@
 <generatorConfiguration>
 
     <classPathEntry
-            location="C:\Users\lenovo\.m2/repository/mysql/mysql-connector-java/5.1.43/mysql-connector-java-5.1.43.jar"/>
+            location="C:\Users\lenovo\.m2\repository\mysql\mysql-connector-java\8.0.12\mysql-connector-java-8.0.12.jar"/>
 
     <context id="common-model" targetRuntime="MyBatis3">
 
@@ -12,10 +12,10 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
-        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/solo"
+        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/solo?serverTimezone=GMT%2B8"
                         driverClass="com.mysql.jdbc.Driver" password="adminadmin" userId="root" />
 
-        <javaModelGenerator targetPackage="com.liumapp.emergency.server.logic.common.domain"
+        <javaModelGenerator targetPackage="com.liumapp.solo.transporter.domain"
                             targetProject="src/main/java" >
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
@@ -26,7 +26,7 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="com.liumapp.emergency.server.logic.common.mapper"
+        <javaClientGenerator targetPackage="com.liumapp.solo.transporter.mapper"
                              targetProject="src/main/java" type="XMLMAPPER" >
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>

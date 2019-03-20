@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liumapp.solo.transporter.mapper.B3SoloTagArticleMapper">
+  <resultMap id="BaseResultMap" type="com.liumapp.solo.transporter.domain.B3SoloTagArticle">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="article_oId" jdbcType="VARCHAR" property="article_oId" />
+    <result column="tag_oId" jdbcType="VARCHAR" property="tag_oId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    oId, article_oId, tag_oId
+  </sql>
+  <select id="selectByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from b3_solo_tag_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from b3_solo_tag_article
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from b3_solo_tag_article
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticleExample">
+    delete from b3_solo_tag_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticle">
+    insert into b3_solo_tag_article (oId, article_oId, tag_oId
+      )
+    values (#{oId,jdbcType=VARCHAR}, #{article_oId,jdbcType=VARCHAR}, #{tag_oId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticle">
+    insert into b3_solo_tag_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="article_oId != null">
+        article_oId,
+      </if>
+      <if test="tag_oId != null">
+        tag_oId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="article_oId != null">
+        #{article_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="tag_oId != null">
+        #{tag_oId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticleExample" resultType="java.lang.Long">
+    select count(*) from b3_solo_tag_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update b3_solo_tag_article
+    <set>
+      <if test="record.oId != null">
+        oId = #{record.oId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.article_oId != null">
+        article_oId = #{record.article_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tag_oId != null">
+        tag_oId = #{record.tag_oId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update b3_solo_tag_article
+    set oId = #{record.oId,jdbcType=VARCHAR},
+      article_oId = #{record.article_oId,jdbcType=VARCHAR},
+      tag_oId = #{record.tag_oId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticle">
+    update b3_solo_tag_article
+    <set>
+      <if test="article_oId != null">
+        article_oId = #{article_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="tag_oId != null">
+        tag_oId = #{tag_oId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticle">
+    update b3_solo_tag_article
+    set article_oId = #{article_oId,jdbcType=VARCHAR},
+      tag_oId = #{tag_oId,jdbcType=VARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.liumapp.solo.transporter.domain.B3SoloTagArticle">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="article_oId" jdbcType="VARCHAR" property="article_oId" />
+    <result column="tag_oId" jdbcType="VARCHAR" property="tag_oId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    oId, article_oId, tag_oId
+  </sql>
+  <select id="selectByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from b3_solo_tag_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from b3_solo_tag_article
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from b3_solo_tag_article
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticleExample">
+    delete from b3_solo_tag_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticle">
+    insert into b3_solo_tag_article (oId, article_oId, tag_oId
+      )
+    values (#{oId,jdbcType=VARCHAR}, #{article_oId,jdbcType=VARCHAR}, #{tag_oId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticle">
+    insert into b3_solo_tag_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="article_oId != null">
+        article_oId,
+      </if>
+      <if test="tag_oId != null">
+        tag_oId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="article_oId != null">
+        #{article_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="tag_oId != null">
+        #{tag_oId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticleExample" resultType="java.lang.Long">
+    select count(*) from b3_solo_tag_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update b3_solo_tag_article
+    <set>
+      <if test="record.oId != null">
+        oId = #{record.oId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.article_oId != null">
+        article_oId = #{record.article_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tag_oId != null">
+        tag_oId = #{record.tag_oId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update b3_solo_tag_article
+    set oId = #{record.oId,jdbcType=VARCHAR},
+      article_oId = #{record.article_oId,jdbcType=VARCHAR},
+      tag_oId = #{record.tag_oId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticle">
+    update b3_solo_tag_article
+    <set>
+      <if test="article_oId != null">
+        article_oId = #{article_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="tag_oId != null">
+        tag_oId = #{tag_oId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liumapp.solo.transporter.domain.B3SoloTagArticle">
+    update b3_solo_tag_article
+    set article_oId = #{article_oId,jdbcType=VARCHAR},
+      tag_oId = #{tag_oId,jdbcType=VARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>
