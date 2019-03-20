@@ -1,9 +1,7 @@
 package com.liumapp.solo.transporter;
 
-
 import com.liumapp.solo.transporter.enums.DataEnums;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.system.SystemTextTerminal;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
@@ -38,6 +36,29 @@ public class DataTransporterConsole implements CommandLineRunner {
         SystemTextTerminal systemTextTerminal = new SystemTextTerminal();
         textIO = new TextIO(systemTextTerminal);
         DataEnums datas = textIO.newEnumInputReader(DataEnums.class).read("先插入文章还是评论？");
+        switch (datas) {
+            case Article:
+                this.handleArticle();
+                break;
+            case Comment:
+                this.handleComment();
+                break;
+            default:
+        }
+    }
+
+    /**
+     * 处理文章数据，插入solo数据库中
+     */
+    private void handleArticle () {
+        Logger.info("开始读取resources目录下的csvjson文件，并识别文章信息");
+
+    }
+
+    /**
+     * 处理评论数据
+     */
+    private void handleComment () {
 
     }
 }
