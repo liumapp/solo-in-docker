@@ -1,9 +1,8 @@
 package com.liumapp.solo.transporter;
 
-import com.alibaba.fastjson.JSONObject;
+import com.liumapp.solo.transporter.contents.JsonFileContents;
 import com.liumapp.solo.transporter.enums.DataEnums;
 import com.liumapp.solo.transporter.loader.JsonFileLoader;
-import com.liumapp.solo.transporter.objects.article.Article;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.system.SystemTextTerminal;
 import org.mybatis.spring.annotation.MapperScan;
@@ -13,10 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.core.task.TaskExecutor;
 
-import javax.annotation.Resource;
 import java.io.FileNotFoundException;
 
 /**
@@ -42,7 +39,7 @@ public class DataTransporterConsole implements CommandLineRunner {
     private JsonFileLoader jsonFileLoader;
 
     @Autowired
-    private Article article;
+    private JsonFileContents jsonFileContents;
 
     public static void main (String[] args) {
         SpringApplication.run(DataTransporterConsole.class, args);
@@ -72,8 +69,8 @@ public class DataTransporterConsole implements CommandLineRunner {
      */
     private void handleArticle () throws FileNotFoundException {
         Logger.info("开始读取resources目录下的csvjson文件，并识别文章信息");
-        String path = article.getArticleTags();
-        article.toString();
+        int length = jsonFileContents.getJsonObject().size();
+        jsonFileContents.getJsonObject().clear();
     }
 
     /**
