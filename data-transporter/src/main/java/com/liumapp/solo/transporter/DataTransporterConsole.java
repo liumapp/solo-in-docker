@@ -3,6 +3,7 @@ package com.liumapp.solo.transporter;
 import com.alibaba.fastjson.JSONObject;
 import com.liumapp.solo.transporter.enums.DataEnums;
 import com.liumapp.solo.transporter.loader.JsonFileLoader;
+import com.liumapp.solo.transporter.objects.article.Article;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.system.SystemTextTerminal;
 import org.mybatis.spring.annotation.MapperScan;
@@ -15,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.task.TaskExecutor;
 
-import java.io.FileInputStream;
+import javax.annotation.Resource;
 import java.io.FileNotFoundException;
 
 /**
@@ -38,7 +39,10 @@ public class DataTransporterConsole implements CommandLineRunner {
     private TaskExecutor taskExecutor;
 
     @Autowired
-    private ApplicationContext applicationContext;
+    private JsonFileLoader jsonFileLoader;
+
+    @Autowired
+    private Article article;
 
     public static void main (String[] args) {
         SpringApplication.run(DataTransporterConsole.class, args);
@@ -48,11 +52,10 @@ public class DataTransporterConsole implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Logger.info("Starting Data Transporter Console program...");
         SystemTextTerminal systemTextTerminal = new SystemTextTerminal();
-
+        taskExecutor.execute(jsonFileLoader);
         textIO = new TextIO(systemTextTerminal);
         DataEnums datas = textIO.newEnumInputReader(DataEnums.class).read("先插入文章还是评论？");
-        JsonFileLoader jsonFileLoader = applicationContext.getBean(JsonFileLoader.class);
-        taskExecutor.execute(jsonFileLoader);
+
         switch (datas) {
             case Article:
                 this.handleArticle();
@@ -69,8 +72,8 @@ public class DataTransporterConsole implements CommandLineRunner {
      */
     private void handleArticle () throws FileNotFoundException {
         Logger.info("开始读取resources目录下的csvjson文件，并识别文章信息");
-
-
+        String path = article.getArticleTags();
+        article.toString();
     }
 
     /**
