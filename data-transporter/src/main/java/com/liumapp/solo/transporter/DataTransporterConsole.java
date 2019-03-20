@@ -2,14 +2,18 @@ package com.liumapp.solo.transporter;
 
 import com.alibaba.fastjson.JSONObject;
 import com.liumapp.solo.transporter.enums.DataEnums;
+import com.liumapp.solo.transporter.loader.JsonFileLoader;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.system.SystemTextTerminal;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.task.TaskExecutor;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,6 +34,12 @@ public class DataTransporterConsole implements CommandLineRunner {
 
     public static TextIO textIO;
 
+    @Autowired
+    private TaskExecutor taskExecutor;
+
+    @Autowired
+    private ApplicationContext applicationContext;
+
     public static void main (String[] args) {
         SpringApplication.run(DataTransporterConsole.class, args);
     }
@@ -38,8 +48,11 @@ public class DataTransporterConsole implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Logger.info("Starting Data Transporter Console program...");
         SystemTextTerminal systemTextTerminal = new SystemTextTerminal();
+
         textIO = new TextIO(systemTextTerminal);
         DataEnums datas = textIO.newEnumInputReader(DataEnums.class).read("先插入文章还是评论？");
+        JsonFileLoader jsonFileLoader = applicationContext.getBean(JsonFileLoader.class);
+        taskExecutor.execute(jsonFileLoader);
         switch (datas) {
             case Article:
                 this.handleArticle();
