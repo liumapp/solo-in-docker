@@ -1,5 +1,6 @@
 package com.liumapp.solo.transporter;
 
+import com.alibaba.fastjson.JSONObject;
 import com.liumapp.solo.transporter.enums.DataEnums;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.system.SystemTextTerminal;
@@ -9,6 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
  * file DataTransporterConsole.java
@@ -50,8 +54,9 @@ public class DataTransporterConsole implements CommandLineRunner {
     /**
      * 处理文章数据，插入solo数据库中
      */
-    private void handleArticle () {
+    private void handleArticle () throws FileNotFoundException {
         Logger.info("开始读取resources目录下的csvjson文件，并识别文章信息");
+
 
     }
 
