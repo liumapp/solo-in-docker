@@ -3,7 +3,7 @@
 <generatorConfiguration>
 
     <classPathEntry
-            location="/Users/suyu/.m2/repository/mysql/mysql-connector-java/5.1.43/mysql-connector-java-5.1.43.jar"/>
+            location="C:\Users\lenovo\.m2/repository/mysql/mysql-connector-java/5.1.43/mysql-connector-java-5.1.43.jar"/>
 
     <context id="common-model" targetRuntime="MyBatis3">
 
@@ -12,8 +12,8 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
-        <jdbcConnection connectionURL="jdbc:mysql://rdsv45k6542skme03476.mysql.rds.aliyuncs.com:3306/sdk_emergency"
-                        driverClass="com.mysql.jdbc.Driver" password="HuLuWa110" userId="hlw197" />
+        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/solo"
+                        driverClass="com.mysql.jdbc.Driver" password="adminadmin" userId="root" />
 
         <javaModelGenerator targetPackage="com.liumapp.emergency.server.logic.common.domain"
                             targetProject="src/main/java" >
@@ -43,7 +43,37 @@
             <property name="useActualColumnNames" value="true" />
         </table>
 
-        <table tableName="b3_solo_archivedate_article" domainObjectName="B3SoloArchivedateArticle"
+        <table tableName="b3_solo_article" domainObjectName="B3SoloArticle"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true"
+        >
+            <property name="useActualColumnNames" value="true" />
+        </table>
+
+        <table tableName="b3_solo_comment" domainObjectName="B3SoloComment"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true"
+        >
+            <property name="useActualColumnNames" value="true" />
+        </table>
+
+        <table tableName="b3_solo_tag" domainObjectName="B3SoloTag"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true"
+        >
+            <property name="useActualColumnNames" value="true" />
+        </table>
+
+        <table tableName="b3_solo_tag_article" domainObjectName="B3SoloTagArticle"
                enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"

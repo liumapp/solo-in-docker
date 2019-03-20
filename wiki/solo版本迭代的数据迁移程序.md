@@ -77,6 +77,7 @@ public static String randImage() {
         return "https://img.hacpai.com/bing/20171104.jpg";
     }
 }
+````
 
 返回的结果便是得到的图片地址，在这个值的基础上增加"?imageView2/1/w/768/h/432/interlace/1/q/100"便可
 
@@ -84,16 +85,17 @@ public static String randImage() {
 
 
 
-
-
-
-
-
-
-
 ### 添加评论的流程
 
 
+## 操作data-transporter导入数据
 
+根据最新版本的solo数据表结构
+
+在data-transporter目录下执行
+
+````shell
+mvn mybatis-generator:generate
+````
 
 
