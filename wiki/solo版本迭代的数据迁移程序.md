@@ -78,7 +78,7 @@ public static String randImage() {
     }
 }
 
-返回的结果便是得到的图片地址，在这个值得基础上增加"?imageView2/1/w/768/h/432/interlace/1/q/100"便可
+返回的结果便是得到的图片地址，在这个值的基础上增加"?imageView2/1/w/768/h/432/interlace/1/q/100"便可
 
 最终得到得结果将是："https://img.hacpai.com/bing/20171204.jpg?imageView2/1/w/768/h/432/interlace/1/q/100"
 
