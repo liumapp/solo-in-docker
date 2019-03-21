@@ -1,6 +1,8 @@
 package com.liumapp.solo.transporter.services.impl;
 
+import com.liumapp.solo.transporter.db.mapper.B3SoloArchivedateArticleMapper;
 import com.liumapp.solo.transporter.services.HandDataService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,7 +16,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ArchivedateArticleHandler implements HandDataService {
 
-
+    @Autowired
+    private B3SoloArchivedateArticleMapper mapper;
 
     @Override
     public void handle() {
