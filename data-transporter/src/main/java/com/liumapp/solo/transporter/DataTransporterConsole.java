@@ -5,6 +5,7 @@ import com.liumapp.solo.transporter.enums.DataEnums;
 import com.liumapp.solo.transporter.loader.start.StartLoadingFile;
 import com.liumapp.solo.transporter.services.impl.ArchivedateArticleHandler;
 import com.liumapp.solo.transporter.services.impl.ArticleHandler;
+import com.liumapp.solo.transporter.services.impl.CommentHandler;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.system.SystemTextTerminal;
 import org.mybatis.spring.annotation.MapperScan;
@@ -41,6 +42,9 @@ public class DataTransporterConsole implements CommandLineRunner {
     private ArticleHandler articleHandler;
 
     @Autowired
+    private CommentHandler commentHandler;
+
+    @Autowired
     private ArchivedateArticleHandler archivedateArticleHandler;
 
     public static void main (String[] args) {
@@ -72,6 +76,8 @@ public class DataTransporterConsole implements CommandLineRunner {
         Logger.info("开始导入文章与创建时间的关联数据");
         archivedateArticleHandler.handle();
         Logger.info("开始导入评论相关数据");
+        commentHandler.handle();
+        Logger.info("开始导入友情链接相关数据");
 
     }
 
