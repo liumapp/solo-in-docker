@@ -104,10 +104,10 @@ public class MybatisPlusGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setSuperEntityClass("com.baomidou.ant.common.BaseEntity");
+        strategy.setSuperEntityClass("com.liumapp.solo.transporter.base.BaseEntity");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
-        strategy.setSuperControllerClass("com.baomidou.ant.common.BaseController");
+        strategy.setSuperControllerClass("com.liumapp.solo.transporter.base.BaseController");
         strategy.setInclude(tableNames.split(","));
         strategy.setSuperEntityColumns("id");
         strategy.setControllerMappingHyphenStyle(true);
