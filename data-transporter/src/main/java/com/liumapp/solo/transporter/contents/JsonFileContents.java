@@ -1,5 +1,6 @@
 package com.liumapp.solo.transporter.contents;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Component;
 
@@ -14,22 +15,22 @@ import org.springframework.stereotype.Component;
 @Component
 public class JsonFileContents {
 
-    private JSONObject article;
+    private JSONArray article;
 
-    private JSONObject archivedateArticle;
+    private JSONArray archivedateArticle;
 
-    private JSONObject comment;
+    private JSONArray comment;
 
-    private JSONObject link;
+    private JSONArray link;
 
-    private JSONObject tag;
+    private JSONArray tag;
 
-    private JSONObject tagArticle;
+    private JSONArray tagArticle;
 
     public JsonFileContents() {
     }
 
-    public JsonFileContents(JSONObject article, JSONObject archivedateArticle, JSONObject comment, JSONObject link, JSONObject tag, JSONObject tagArticle) {
+    public JsonFileContents(JSONArray article, JSONArray archivedateArticle, JSONArray comment, JSONArray link, JSONArray tag, JSONArray tagArticle) {
         this.article = article;
         this.archivedateArticle = archivedateArticle;
         this.comment = comment;
@@ -38,51 +39,51 @@ public class JsonFileContents {
         this.tagArticle = tagArticle;
     }
 
-    public JSONObject getArticle() {
+    public JSONArray getArticle() {
         return article;
     }
 
-    public void setArticle(JSONObject article) {
+    public void setArticle(JSONArray article) {
         this.article = article;
     }
 
-    public JSONObject getArchivedateArticle() {
+    public JSONArray getArchivedateArticle() {
         return archivedateArticle;
     }
 
-    public void setArchivedateArticle(JSONObject archivedateArticle) {
+    public void setArchivedateArticle(JSONArray archivedateArticle) {
         this.archivedateArticle = archivedateArticle;
     }
 
-    public JSONObject getComment() {
+    public JSONArray getComment() {
         return comment;
     }
 
-    public void setComment(JSONObject comment) {
+    public void setComment(JSONArray comment) {
         this.comment = comment;
     }
 
-    public JSONObject getLink() {
+    public JSONArray getLink() {
         return link;
     }
 
-    public void setLink(JSONObject link) {
+    public void setLink(JSONArray link) {
         this.link = link;
     }
 
-    public JSONObject getTag() {
+    public JSONArray getTag() {
         return tag;
     }
 
-    public void setTag(JSONObject tag) {
+    public void setTag(JSONArray tag) {
         this.tag = tag;
     }
 
-    public JSONObject getTagArticle() {
+    public JSONArray getTagArticle() {
         return tagArticle;
     }
 
-    public void setTagArticle(JSONObject tagArticle) {
+    public void setTagArticle(JSONArray tagArticle) {
         this.tagArticle = tagArticle;
     }
 }

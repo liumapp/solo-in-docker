@@ -1,6 +1,7 @@
 package com.liumapp.solo.transporter.loader;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.solo.transporter.contents.JsonFileContents;
 import org.slf4j.Logger;
@@ -30,7 +31,8 @@ public class LinkLoader implements Runnable {
         Logger.info("LinkLoader begin...");
         try {
             String filepath = this.getClass().getResource("/json/b3_solo_link.json").getPath();
-            jsonFileContents.setLink(JSON.parseObject(FileTool.readFileAsString(filepath)));
+            JSONObject tmp = JSON.parseObject(FileTool.readFileAsString(filepath));
+            jsonFileContents.setLink(tmp.getJSONArray("RECORDS"));
             Logger.info("LinkLoader done...");
         } catch (Exception e) {
             e.printStackTrace();

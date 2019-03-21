@@ -46,6 +46,7 @@ public class DataTransporterConsole implements CommandLineRunner {
         Logger.info("Starting Data Transporter Console program...");
         SystemTextTerminal systemTextTerminal = new SystemTextTerminal();
         startLoadingFile.start();
+        Thread.sleep(3000);
         textIO = new TextIO(systemTextTerminal);
         DataEnums datas = textIO.newEnumInputReader(DataEnums.class).read("先插入文章还是评论？");
 
