@@ -3,6 +3,7 @@ package com.liumapp.solo.transporter;
 import com.liumapp.solo.transporter.contents.JsonFileContents;
 import com.liumapp.solo.transporter.enums.DataEnums;
 import com.liumapp.solo.transporter.loader.start.StartLoadingFile;
+import com.liumapp.solo.transporter.services.ArticleService;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.system.SystemTextTerminal;
 import org.mybatis.spring.annotation.MapperScan;
@@ -37,6 +38,9 @@ public class DataTransporterConsole implements CommandLineRunner {
     @Autowired
     private JsonFileContents jsonFileContents;
 
+    @Autowired
+    private ArticleService articleService;
+
     public static void main (String[] args) {
         SpringApplication.run(DataTransporterConsole.class, args);
     }
@@ -64,15 +68,14 @@ public class DataTransporterConsole implements CommandLineRunner {
     /**
      * 处理文章数据，插入solo数据库中
      */
-    private void handleArticle () throws FileNotFoundException {
+    private void handleArticle () {
         int length = jsonFileContents.getArticle().size();
         if (length == 0) {
             Logger.error("未能捕获到文章信息，结束");
             return ;
         }
-
         Logger.info("开始处理文章插入逻辑");
-
+        Logger.info("首先插入article数据");
 
     }
 
