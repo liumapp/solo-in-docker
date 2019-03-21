@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
- * file ArchivedateArticleLoader.java
+ * file CommentLoader.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
@@ -19,7 +19,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Scope("prototype")
-public class ArchivedateArticleLoader implements Runnable {
+public class CommentLoader implements Runnable {
+
     private static final Logger Logger = LoggerFactory.getLogger(ArticleLoader.class);
 
     @Autowired
@@ -27,13 +28,14 @@ public class ArchivedateArticleLoader implements Runnable {
 
     @Override
     public void run() {
-        Logger.info("ArchivedateArticleLoader begin...");
+        Logger.info("CommentLoader begin...");
         try {
-            String filepath = this.getClass().getResource("/json/b3_solo_archivedate_article.json").getPath();
-            jsonFileContents.setArchivedateArticle(JSON.parseObject(FileTool.readFileAsString(filepath)));
-            Logger.info("ArchivedateArticleLoader done...");
+            String filepath = this.getClass().getResource("/json/b3_solo_comment.json").getPath();
+            jsonFileContents.setArticle(JSON.parseObject(FileTool.readFileAsString(filepath)));
+            Logger.info("CommentLoader done...");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }
