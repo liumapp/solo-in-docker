@@ -58,6 +58,8 @@ jdbc.URL=jdbc:mysql://localhost:3306/solo?useUnicode=yes&characterEncoding=UTF-8
 
 通过前端的network，我们可以知道，本地发布文章的api地址是：http://localhost:8080/console/article/
 
+那么处理新增文章的solo源码便可以很容易找到，在org.b3log.solo.processor.console.ArticleConsole的addArticle方法
+
 新版本的solo发布文章跟老版本最大的区别，在于新版本新增了一个articleImg1URL这个字段，里面存储的内容便是文章的封面图片url地址，我们老版本的文章并没有这条数据，所以需要动态生成它
 
 那么如何动态生成呢？其实很简单，我们可以直接用solo中的这一段代码：

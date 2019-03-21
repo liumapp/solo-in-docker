@@ -9,7 +9,7 @@
 
         <commentGenerator>
             <property name="suppressDate" value="true"/>
-            <property name="suppressAllComments" value="true"/>
+            <property name="suppressAllComments" value="false"/>
         </commentGenerator>
 
         <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/solo?serverTimezone=GMT%2B8"
