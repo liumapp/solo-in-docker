@@ -3,7 +3,7 @@ package com.liumapp.solo.transporter;
 import com.liumapp.solo.transporter.contents.JsonFileContents;
 import com.liumapp.solo.transporter.enums.DataEnums;
 import com.liumapp.solo.transporter.loader.start.StartLoadingFile;
-import com.liumapp.solo.transporter.services.ArticleService;
+import com.liumapp.solo.transporter.services.impl.ArticleService;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.system.SystemTextTerminal;
 import org.mybatis.spring.annotation.MapperScan;
@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.io.FileNotFoundException;
 
 /**
  * file DataTransporterConsole.java
