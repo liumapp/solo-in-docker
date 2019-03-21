@@ -2,7 +2,7 @@ package com.liumapp.solo.transporter;
 
 import com.liumapp.solo.transporter.contents.JsonFileContents;
 import com.liumapp.solo.transporter.enums.DataEnums;
-import com.liumapp.solo.transporter.loader.JsonFileLoader;
+import com.liumapp.solo.transporter.loader.start.StartLoadingFile;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.system.SystemTextTerminal;
 import org.mybatis.spring.annotation.MapperScan;
@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.core.task.TaskExecutor;
 
 import java.io.FileNotFoundException;
 
@@ -33,10 +32,7 @@ public class DataTransporterConsole implements CommandLineRunner {
     public static TextIO textIO;
 
     @Autowired
-    private TaskExecutor taskExecutor;
-
-    @Autowired
-    private JsonFileLoader jsonFileLoader;
+    private StartLoadingFile startLoadingFile;
 
     @Autowired
     private JsonFileContents jsonFileContents;
@@ -49,7 +45,7 @@ public class DataTransporterConsole implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Logger.info("Starting Data Transporter Console program...");
         SystemTextTerminal systemTextTerminal = new SystemTextTerminal();
-        taskExecutor.execute(jsonFileLoader);
+        startLoadingFile.start();
         textIO = new TextIO(systemTextTerminal);
         DataEnums datas = textIO.newEnumInputReader(DataEnums.class).read("先插入文章还是评论？");
 
@@ -68,9 +64,15 @@ public class DataTransporterConsole implements CommandLineRunner {
      * 处理文章数据，插入solo数据库中
      */
     private void handleArticle () throws FileNotFoundException {
-        Logger.info("开始读取resources目录下的csvjson文件，并识别文章信息");
-        int length = jsonFileContents.getJsonObject().size();
-        jsonFileContents.getJsonObject().clear();
+        int length = jsonFileContents.getArticle().size();
+        if (length == 0) {
+            Logger.error("未能捕获到文章信息，结束");
+            return ;
+        }
+
+        Logger.info("开始处理文章插入逻辑");
+
+
     }
 
     /**
