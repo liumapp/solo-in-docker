@@ -2,6 +2,7 @@ package com.liumapp.solo.transporter.db.mapper;
 
 import com.liumapp.solo.transporter.db.entity.B3SoloArticle;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author liumapp
  * @since 2019-03-21
  */
+@Service
 public interface B3SoloArticleMapper extends BaseMapper<B3SoloArticle> {
 
 }
