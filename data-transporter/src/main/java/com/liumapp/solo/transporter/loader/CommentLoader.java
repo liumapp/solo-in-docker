@@ -31,7 +31,7 @@ public class CommentLoader implements Runnable {
         Logger.info("CommentLoader begin...");
         try {
             String filepath = this.getClass().getResource("/json/b3_solo_comment.json").getPath();
-            jsonFileContents.setArticle(JSON.parseObject(FileTool.readFileAsString(filepath)));
+            jsonFileContents.setComment(JSON.parseObject(FileTool.readFileAsString(filepath)));
             Logger.info("CommentLoader done...");
         } catch (Exception e) {
             e.printStackTrace();

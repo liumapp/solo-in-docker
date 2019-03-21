@@ -14,8 +14,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class JsonFileContents {
 
-    private JSONObject jsonObject;
-
     private JSONObject article;
 
     private JSONObject archivedateArticle;
@@ -31,22 +29,13 @@ public class JsonFileContents {
     public JsonFileContents() {
     }
 
-    public JsonFileContents(JSONObject jsonObject, JSONObject article, JSONObject archivedateArticle, JSONObject comment, JSONObject link, JSONObject tag, JSONObject tagArticle) {
-        this.jsonObject = jsonObject;
+    public JsonFileContents(JSONObject article, JSONObject archivedateArticle, JSONObject comment, JSONObject link, JSONObject tag, JSONObject tagArticle) {
         this.article = article;
         this.archivedateArticle = archivedateArticle;
         this.comment = comment;
         this.link = link;
         this.tag = tag;
         this.tagArticle = tagArticle;
-    }
-
-    public JSONObject getJsonObject() {
-        return jsonObject;
-    }
-
-    public void setJsonObject(JSONObject jsonObject) {
-        this.jsonObject = jsonObject;
     }
 
     public JSONObject getArticle() {
