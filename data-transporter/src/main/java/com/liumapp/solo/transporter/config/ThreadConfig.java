@@ -21,8 +21,8 @@ public class ThreadConfig {
     @Bean
     public TaskExecutor threadPoolTaskExecutor () {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(4);
-        executor.setMaxPoolSize(8);
+        executor.setCorePoolSize(6);
+        executor.setMaxPoolSize(12);
         executor.setThreadNamePrefix("liumapp_task_executor_thread");
         executor.initialize();
         return executor;
