@@ -36,9 +36,17 @@ public class ArticleHandler implements HandDataService {
             JSONObject article = (JSONObject) iterator.next();
 
             b3SoloArticle.setOId(article.get("oId").toString());//主键
-            b3SoloArticle.setArticleTitle(article.get("articleTitle").toString());//文章标题
-            b3SoloArticle.setArticleAbstract(article.get("articleAbstract").toString());//文章摘要
-//            b3SoloArticle.setArticleAbstractText()
+            b3SoloArticle.setArticleTitle(article.get("articleTitle").toString());
+            b3SoloArticle.setArticleAbstract(article.get("articleAbstract").toString());
+            b3SoloArticle.setArticleAbstractText(article.get("articleAbstract").toString());//老版本对摘要并没有做markdown和纯文本的区分
+            b3SoloArticle.setArticleTags(article.get("articleTags").toString());
+            b3SoloArticle.setArticleAuthorId("1552984888476");
+            b3SoloArticle.setArticleCommentCount(Integer.parseInt(article.get("articleCommentCount").toString()));
+            b3SoloArticle.setArticleViewCount(Integer.parseInt(article.get("articleViewCount").toString()));
+            b3SoloArticle.setArticleContent(article.get("articleContent").toString());
+            b3SoloArticle.setArticlePermalink(article.get("articlePermalink").toString());
+            b3SoloArticle.setArticlePutTop(article.get("articlePutTop").toString());
+//            b3SoloArticle.setArticleCreated()
         }
     }
 

@@ -78,6 +78,13 @@
       <artifactId>qtools-file</artifactId>
       <version>v1.3.7</version>
     </dependency>
+
+    <!--for solo util-->
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.9.1</version>
+    </dependency>
   </dependencies>
 
   <build>
