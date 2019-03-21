@@ -3,7 +3,7 @@ package com.liumapp.solo.transporter;
 import com.liumapp.solo.transporter.contents.JsonFileContents;
 import com.liumapp.solo.transporter.enums.DataEnums;
 import com.liumapp.solo.transporter.loader.start.StartLoadingFile;
-import com.liumapp.solo.transporter.services.impl.ArticleService;
+import com.liumapp.solo.transporter.services.impl.ArticleHandler;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.system.SystemTextTerminal;
 import org.mybatis.spring.annotation.MapperScan;
@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 
 /**
  * file DataTransporterConsole.java
@@ -37,7 +39,7 @@ public class DataTransporterConsole implements CommandLineRunner {
     private JsonFileContents jsonFileContents;
 
     @Autowired
-    private ArticleService articleService;
+    private ArticleHandler articleHandler;
 
     public static void main (String[] args) {
         SpringApplication.run(DataTransporterConsole.class, args);
@@ -74,6 +76,7 @@ public class DataTransporterConsole implements CommandLineRunner {
         }
         Logger.info("开始处理文章插入逻辑");
         Logger.info("首先插入article数据");
+        articleHandler.handle();
 
     }
 

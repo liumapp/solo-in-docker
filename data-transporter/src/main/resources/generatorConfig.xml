@@ -31,8 +31,6 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-
-
         <table tableName="b3_solo_archivedate_article" domainObjectName="B3SoloArchivedateArticle"
         enableCountByExample="true"
         enableUpdateByExample="true"
@@ -82,6 +80,5 @@
         >
             <property name="useActualColumnNames" value="true" />
         </table>
-
     </context>
 </generatorConfiguration>
