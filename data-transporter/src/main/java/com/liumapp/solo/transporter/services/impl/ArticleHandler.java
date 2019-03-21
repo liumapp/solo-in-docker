@@ -6,6 +6,9 @@ import com.liumapp.solo.transporter.contents.JsonFileContents;
 import com.liumapp.solo.transporter.db.entity.B3SoloArticle;
 import com.liumapp.solo.transporter.db.mapper.B3SoloArticleMapper;
 import com.liumapp.solo.transporter.services.HandDataService;
+import com.liumapp.solo.transporter.util.CommonUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +25,16 @@ import java.util.Iterator;
 @Service
 public class ArticleHandler implements HandDataService {
 
+    private static Logger Logger = LoggerFactory.getLogger(ArticleHandler.class);
+
     @Autowired
     private JsonFileContents jsonFileContents;
 
     @Autowired
     private B3SoloArticleMapper b3SoloArticleMapper;
+
+    @Autowired
+    private CommonUtil commonUtil;
 
     @Override
     public void handle() {
@@ -46,8 +54,16 @@ public class ArticleHandler implements HandDataService {
             b3SoloArticle.setArticleContent(article.get("articleContent").toString());
             b3SoloArticle.setArticlePermalink(article.get("articlePermalink").toString());
             b3SoloArticle.setArticlePutTop(article.get("articlePutTop").toString());
-//            b3SoloArticle.setArticleCreated()
+            b3SoloArticle.setArticleCreated(commonUtil.oldDateToMilliSec(article.get("articleCreateDate").toString()));
+            b3SoloArticle.setArticleUpdated(commonUtil.oldDateToMilliSec(article.get("articleUpdateDate").toString()));
+            b3SoloArticle.setArticleRandomDouble(Double.parseDouble(article.get("articleRandomDouble").toString()));
+            b3SoloArticle.setArticleSignId(article.get("articleSignId").toString());
+            b3SoloArticle.setArticleCommentable("1");
+            b3SoloArticle.setArticleViewPwd("");
+            b3SoloArticle.setArticleImg1URL(commonUtil.randImage() + "?imageView2/1/w/768/h/432/interlace/1/q/100");
+            b3SoloArticle.setArticleStatus(commonUtil.isPublished(Integer.parseInt(article.get("articleHadBeenPublished").toString())));
         }
+        Logger.info("一共插入了" + articles.size() + "条文章记录");
     }
 
 }
