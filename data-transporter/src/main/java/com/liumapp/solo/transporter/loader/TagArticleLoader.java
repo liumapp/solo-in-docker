@@ -35,6 +35,7 @@ public class TagArticleLoader implements Runnable {
             JSONObject tmp = JSON.parseObject(FileTool.readFileAsString(filepath));
             jsonFileContents.setTagArticle(tmp.getJSONArray("RECORDS"));
             Logger.info("TagArticleLoader done...");
+            Logger.info("检测到有" + jsonFileContents.getTagArticle().size() + "条文章与tag的关联数据");
         } catch (Exception e) {
             e.printStackTrace();
         }

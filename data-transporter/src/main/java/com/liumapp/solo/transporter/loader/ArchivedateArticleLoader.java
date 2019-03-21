@@ -34,6 +34,7 @@ public class ArchivedateArticleLoader implements Runnable {
             JSONObject tmp = JSON.parseObject(FileTool.readFileAsString(filepath));
             jsonFileContents.setArchivedateArticle(tmp.getJSONArray("RECORDS"));
             Logger.info("ArchivedateArticleLoader done...");
+            Logger.info("检测到有" + jsonFileContents.getArchivedateArticle().size() + "条archivedateArticle记录");
         } catch (Exception e) {
             e.printStackTrace();
         }

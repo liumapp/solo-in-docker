@@ -34,6 +34,7 @@ public class LinkLoader implements Runnable {
             JSONObject tmp = JSON.parseObject(FileTool.readFileAsString(filepath));
             jsonFileContents.setLink(tmp.getJSONArray("RECORDS"));
             Logger.info("LinkLoader done...");
+            Logger.info("检测到有" + jsonFileContents.getLink().size() + "条友情链接数据");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -50,6 +50,7 @@ public class DataTransporterConsole implements CommandLineRunner {
         startLoadingFile.start();
         Thread.sleep(3000);
         textIO = new TextIO(systemTextTerminal);
+        Boolean isDo = textIO.newBooleanInputReader().read("要开始导入数据吗？");
         DataEnums datas = textIO.newEnumInputReader(DataEnums.class).read("先插入文章还是评论？");
 
         switch (datas) {

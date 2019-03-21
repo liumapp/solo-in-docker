@@ -35,6 +35,7 @@ public class CommentLoader implements Runnable {
             JSONObject tmp = JSON.parseObject(FileTool.readFileAsString(filepath));
             jsonFileContents.setComment(tmp.getJSONArray("RECORDS"));
             Logger.info("CommentLoader done...");
+            Logger.info("检测到有" + jsonFileContents.getComment().size() + "条评论数据");
         } catch (Exception e) {
             e.printStackTrace();
         }

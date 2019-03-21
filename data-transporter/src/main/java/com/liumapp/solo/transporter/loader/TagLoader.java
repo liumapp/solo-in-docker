@@ -35,6 +35,7 @@ public class TagLoader implements Runnable {
             JSONObject tmp = JSON.parseObject(FileTool.readFileAsString(filepath));
             jsonFileContents.setTag(tmp.getJSONArray("RECORDS"));
             Logger.info("TagLoader done...");
+            Logger.info("检测到有" + jsonFileContents.getTag().size() + "条标签数据");
         } catch (Exception e) {
             e.printStackTrace();
         }
