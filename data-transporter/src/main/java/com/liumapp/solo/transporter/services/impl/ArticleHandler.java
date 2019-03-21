@@ -35,10 +35,10 @@ public class ArticleHandler implements HandDataService {
         for (Iterator iterator = articles.iterator(); iterator.hasNext();) {
             JSONObject article = (JSONObject) iterator.next();
 
-//            b3SoloArticle.setoId(article.get("oId").toString());//主键
-//            b3SoloArticle.setArticleTitle(article.get("articleTitle").toString());//文章标题
-//            b3SoloArticle.setArticleAbstract(article.get("articleAbstract").toString());//文章摘要
-//            b3SoloArticle.setarticleabs
+            b3SoloArticle.setOId(article.get("oId").toString());//主键
+            b3SoloArticle.setArticleTitle(article.get("articleTitle").toString());//文章标题
+            b3SoloArticle.setArticleAbstract(article.get("articleAbstract").toString());//文章摘要
+//            b3SoloArticle.setArticleAbstractText()
         }
     }
 
