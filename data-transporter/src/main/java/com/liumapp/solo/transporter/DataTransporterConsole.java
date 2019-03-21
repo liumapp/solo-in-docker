@@ -3,9 +3,7 @@ package com.liumapp.solo.transporter;
 import com.liumapp.solo.transporter.contents.JsonFileContents;
 import com.liumapp.solo.transporter.enums.DataEnums;
 import com.liumapp.solo.transporter.loader.start.StartLoadingFile;
-import com.liumapp.solo.transporter.services.impl.ArchivedateArticleHandler;
-import com.liumapp.solo.transporter.services.impl.ArticleHandler;
-import com.liumapp.solo.transporter.services.impl.CommentHandler;
+import com.liumapp.solo.transporter.services.impl.*;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.system.SystemTextTerminal;
 import org.mybatis.spring.annotation.MapperScan;
@@ -47,6 +45,12 @@ public class DataTransporterConsole implements CommandLineRunner {
     @Autowired
     private ArchivedateArticleHandler archivedateArticleHandler;
 
+    @Autowired
+    private LinkHandler linkHandler;
+
+    @Autowired
+    private TagHandler tagHandler;
+
     public static void main (String[] args) {
         SpringApplication.run(DataTransporterConsole.class, args);
     }
@@ -78,6 +82,9 @@ public class DataTransporterConsole implements CommandLineRunner {
         Logger.info("开始导入评论相关数据");
         commentHandler.handle();
         Logger.info("开始导入友情链接相关数据");
+        linkHandler.handle();
+        Logger.info("开始导入标签数据");
+        tagHandler.handle();
 
     }
 
