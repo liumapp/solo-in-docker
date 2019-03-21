@@ -74,6 +74,11 @@
       <version>1.2.15</version>
     </dependency>
     <dependency>
+      <groupId>io.swagger</groupId>
+      <artifactId>swagger-annotations</artifactId>
+      <version>1.5.15</version>
+    </dependency>
+    <dependency>
       <groupId>com.liumapp.qtools.file</groupId>
       <artifactId>qtools-file</artifactId>
       <version>v1.3.7</version>
