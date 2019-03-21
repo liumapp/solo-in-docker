@@ -62,6 +62,7 @@ public class ArticleHandler implements HandDataService {
             b3SoloArticle.setArticleViewPwd("");
             b3SoloArticle.setArticleImg1URL(commonUtil.randImage() + "?imageView2/1/w/768/h/432/interlace/1/q/100");
             b3SoloArticle.setArticleStatus(commonUtil.isPublished(Integer.parseInt(article.get("articleHadBeenPublished").toString())));
+            b3SoloArticleMapper.insert(b3SoloArticle);
         }
         Logger.info("一共插入了" + articles.size() + "条文章记录");
     }

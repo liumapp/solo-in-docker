@@ -74,7 +74,7 @@ public class DataTransporterConsole implements CommandLineRunner {
         }
         Logger.info("开始处理文章插入逻辑");
         Logger.info("首先插入article数据");
-        articleHandler.handle();
+//        articleHandler.handle();
 
     }
 
