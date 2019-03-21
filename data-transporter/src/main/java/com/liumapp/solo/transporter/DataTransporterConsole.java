@@ -51,6 +51,9 @@ public class DataTransporterConsole implements CommandLineRunner {
     @Autowired
     private TagHandler tagHandler;
 
+    @Autowired
+    private TagArticleHandler tagArticleHandler;
+
     public static void main (String[] args) {
         SpringApplication.run(DataTransporterConsole.class, args);
     }
@@ -85,7 +88,8 @@ public class DataTransporterConsole implements CommandLineRunner {
         linkHandler.handle();
         Logger.info("开始导入标签数据");
         tagHandler.handle();
-
+        Logger.info("开始导入标签与文章的关联数据");
+        tagArticleHandler.handle();
     }
 
 }
