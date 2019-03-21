@@ -3,6 +3,7 @@ package com.liumapp.solo.transporter;
 import com.liumapp.solo.transporter.contents.JsonFileContents;
 import com.liumapp.solo.transporter.enums.DataEnums;
 import com.liumapp.solo.transporter.loader.start.StartLoadingFile;
+import com.liumapp.solo.transporter.services.impl.ArchivedateArticleHandler;
 import com.liumapp.solo.transporter.services.impl.ArticleHandler;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.system.SystemTextTerminal;
@@ -39,6 +40,9 @@ public class DataTransporterConsole implements CommandLineRunner {
     @Autowired
     private ArticleHandler articleHandler;
 
+    @Autowired
+    private ArchivedateArticleHandler archivedateArticleHandler;
+
     public static void main (String[] args) {
         SpringApplication.run(DataTransporterConsole.class, args);
     }
@@ -66,7 +70,8 @@ public class DataTransporterConsole implements CommandLineRunner {
         Logger.info("首先插入article数据");
 //        articleHandler.handle();
         Logger.info("开始导入文章与创建时间的关联数据");
-
+        archivedateArticleHandler.handle();
+        Logger.info("开始导入评论相关数据");
 
     }
 
