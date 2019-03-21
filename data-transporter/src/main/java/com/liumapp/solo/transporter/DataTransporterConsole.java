@@ -23,7 +23,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * date 2019/3/20
  */
 @SpringBootApplication
-@MapperScan("com.liumapp.solo.transporter.mapper")
+@MapperScan("com.liumapp.solo.transporter.db.mapper")
 public class DataTransporterConsole implements CommandLineRunner {
 
     private static Logger Logger = LoggerFactory.getLogger(DataTransporterConsole.class);
