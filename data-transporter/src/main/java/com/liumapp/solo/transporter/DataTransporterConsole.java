@@ -1,7 +1,6 @@
 package com.liumapp.solo.transporter;
 
 import com.liumapp.solo.transporter.contents.JsonFileContents;
-import com.liumapp.solo.transporter.enums.DataEnums;
 import com.liumapp.solo.transporter.loader.start.StartLoadingFile;
 import com.liumapp.solo.transporter.services.impl.*;
 import org.beryx.textio.TextIO;
