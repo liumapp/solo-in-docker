@@ -3,6 +3,7 @@ package com.liumapp.solo.transporter.services.impl;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.liumapp.solo.transporter.contents.JsonFileContents;
+import com.liumapp.solo.transporter.db.entity.B3SoloTagArticle;
 import com.liumapp.solo.transporter.services.HandDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,10 @@ public class TagArticleHandler implements HandDataService {
     @Override
     public void handle() {
         JSONArray tagArticles = jsonFileContents.getTagArticle();
+        B3SoloTagArticle b3SoloTagArticle = new B3SoloTagArticle();
         for (Iterator iterator = tagArticles.iterator(); iterator.hasNext();) {
             JSONObject tagArticle = (JSONObject) iterator.next();
+
         }
     }
 

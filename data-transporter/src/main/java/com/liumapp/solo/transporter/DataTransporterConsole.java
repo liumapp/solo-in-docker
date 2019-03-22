@@ -86,9 +86,11 @@ public class DataTransporterConsole implements CommandLineRunner {
         Logger.info("开始导入友情链接相关数据");
 //        linkHandler.handle();
         Logger.info("开始导入标签数据");
-        tagHandler.handle();
+//        tagHandler.handle();
         Logger.info("开始导入标签与文章的关联数据");
         tagArticleHandler.handle();
+        Logger.info("所有导入工作成功，结束进程中");
+        System.exit(-1);
     }
 
 }
