@@ -80,7 +80,7 @@ public class DataTransporterConsole implements CommandLineRunner {
         Logger.info("首先插入article数据");
 //        articleHandler.handle();
         Logger.info("开始导入文章与创建时间的关联数据");
-        archivedateArticleHandler.handle();
+//        archivedateArticleHandler.handle();
         Logger.info("开始导入评论相关数据");
         commentHandler.handle();
         Logger.info("开始导入友情链接相关数据");
