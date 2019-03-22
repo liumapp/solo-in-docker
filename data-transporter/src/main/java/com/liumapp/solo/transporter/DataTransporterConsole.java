@@ -67,6 +67,8 @@ public class DataTransporterConsole implements CommandLineRunner {
         Boolean isDo = textIO.newBooleanInputReader().read("要开始导入数据吗？");
         if (isDo) {
             this.beginHandData();
+        } else {
+            System.exit(-1);
         }
     }
 

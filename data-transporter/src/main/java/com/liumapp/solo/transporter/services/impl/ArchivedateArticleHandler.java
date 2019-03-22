@@ -43,7 +43,7 @@ public class ArchivedateArticleHandler implements HandDataService {
             archivedateArticle.setArticleOid(archivedate.get("article_oId").toString());
             mapper.insert(archivedateArticle);
         }
-        logger.info("一共插入了" + archivedates.size() + "条archivedate数据");
+        logger.info("一共插入了" + archivedates.size() + "条archivedateArticle数据");
     }
 
 }
