@@ -78,15 +78,15 @@ public class DataTransporterConsole implements CommandLineRunner {
         }
         Logger.info("开始处理文章插入逻辑");
         Logger.info("首先插入article数据");
-//        articleHandler.handle();
+        articleHandler.handle();
         Logger.info("开始导入文章与创建时间的关联数据");
-//        archivedateArticleHandler.handle();
+        archivedateArticleHandler.handle();
         Logger.info("开始导入评论相关数据");
-//        commentHandler.handle();
+        commentHandler.handle();
         Logger.info("开始导入友情链接相关数据");
-//        linkHandler.handle();
+        linkHandler.handle();
         Logger.info("开始导入标签数据");
-//        tagHandler.handle();
+        tagHandler.handle();
         Logger.info("开始导入标签与文章的关联数据");
         tagArticleHandler.handle();
         Logger.info("所有导入工作成功，结束进程中");
