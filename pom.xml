@@ -14,7 +14,6 @@
 	</properties>
 
 	<modules>
-		<module>solo</module>
 		<module>data-transporter</module>
 	</modules>
 
