@@ -15,7 +15,6 @@ services:
   solo:
     container_name: solo
     image: b3log/solo
-    domainname: www.liumapp.com
     restart: always
     ports:
       - "8080:8080"
@@ -25,6 +24,8 @@ services:
       JDBC_PASSWORD: "adminadmin"
       JDBC_DRIVER: "com.mysql.jdbc.Driver"
       JDBC_URL: "jdbc:mysql://mysql:3306/solo?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC"
+      SERVER_HOST: "www.liumapp.com"
+    command: --listen_port=8080 --server_scheme=http --server_host=www.liumapp.com
 
 
 
