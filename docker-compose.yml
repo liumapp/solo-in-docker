@@ -14,7 +14,8 @@ services:
       - MYSQL_ROOT_PASSWORD=adminadmin
   solo:
     container_name: solo
-    image: b3log/solo --listen_port=8080 --server_scheme=http --server_host=www.liumapp.com
+    image: b3log/solo
+    domainname: www.liumapp.com
     restart: always
     ports:
       - "8080:8080"
