@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 
 services:
   mysql:
@@ -12,20 +12,6 @@ services:
       - "6603:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=adminadmin
-  tomcat:
-    container_name: tomcat
-    restart: always
-    image: tomcat:9.0
-    ports:
-      - 80:80
-      - 8009:8009
-    volumes:
-      - ./webapps/solo.war:/usr/local/tomcat/webapps/solo.war
-      - ./conf/server.xml:/usr/local/tomcat/conf/server.xml
-      - ./logs:/usr/local/tomcat/logs
-    links:
-      - mysql:m1
-
 
 
 
