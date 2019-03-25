@@ -28,8 +28,8 @@ docker run --detach --name solo --network=host \
     --env RUNTIME_DB="MYSQL" \
     --env JDBC_USERNAME="root" \
     --env JDBC_PASSWORD="adminadmin" \
-    --env JDBC_DRIVER="com.mysql.cj.jdbc.Driver" \
-    --env JDBC_URL="jdbc:mysql://127.0.0.1:6603/solo?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC" \
+    --env JDBC_DRIVER="com.mysql.jdbc.Driver" \
+    --env JDBC_URL="jdbc:mysql://127.0.0.1:3306/solo?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC" \
     b3log/solo --listen_port=8080 --server_scheme=http --server_host=localhost
 
 # 启动成功后可通过以下命令查看运行情况
