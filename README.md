@@ -57,7 +57,7 @@
     
 * 查看solo日志的命令
 
-    ````
+    ```
     docker logs -t -f --tail 100 solo
     ```                                
     
