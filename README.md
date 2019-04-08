@@ -33,7 +33,7 @@
         image: b3log/solo //直接使用最新版本的solo镜像
         restart: always
         ports:
-          - "8080:8080" //如果要部署到线上的话，请改为"80:80"
+          - "8080:8080" //如果要部署到线上的话，请改为"80:80"，同时修改下面的--listen_port=80
         environment: //此处配置solo跟mysql的连接设置，来源为上面启动的mysql容器，如果要用自己的mysql服务，那么请将mysql的servcie去掉
           RUNTIME_DB: "MYSQL"
           JDBC_USERNAME: "root"
