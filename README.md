@@ -16,6 +16,8 @@
 * 配置docker-compose.yml文件，需要注意的事项已经全部//备注好了
 
     ````yaml
+    version: "2"
+    
     services:
       mysql:
         container_name: mysql
