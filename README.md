@@ -66,3 +66,12 @@
 ## 效果展示
 
 http://www.liumapp.com    
+
+## 注意事项
+
+* docker-compose 只是一个 docker 容器的编排工具，本质还是 docker 容器在运行
+
+* 每一次命令 docker-compose 启动的时候，都会自动拉取最新 solo 的镜像，所以自动更新非常简单
+
+* 数据备份问题，docker 容器死亡的时候，容器内数据会自动清除，除非我们使用 volumes 构建映射关系，这里我只将最重要的 mysql 数据库文件映射在 mysql/data 目录下
+
