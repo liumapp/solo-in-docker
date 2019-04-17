@@ -34,7 +34,7 @@ services:
       - 443:443
     volumes:
       - ./nginx/vhosts:/etc/nginx/conf.d
-      - /etc/letsencrypt/live/liumapp.com/:/etc/letsencrypt/live/liumapp.com/
+      - /etc/letsencrypt:/etc/letsencrypt
     links:
       - solo:solo  
 
