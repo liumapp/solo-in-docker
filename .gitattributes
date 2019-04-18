@@ -1,1 +1,2 @@
-*.yml linguist-language=Docker
+*.yml linguist-language=Dockerfile
+*.md linguist-language=Dockerfile
