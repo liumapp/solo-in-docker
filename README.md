@@ -1,6 +1,6 @@
 # solo-in-docker
 
-> 一条命令在docker中启动solo，所有麻烦的配置全部用docker-compose编排解决
+> 一条命令在docker中启动solo，所有麻烦的配置全部用docker-compose编排解决。One simple command to starts solo in docker, with all troublesome configurations solved by docker-compose orchestration.
 
 ## 如何使用
 
