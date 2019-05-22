@@ -14,7 +14,7 @@ services:
     command: --max_allowed_packet=32505856
   solo:
     container_name: solo
-    image: b3log/solo
+    image: b3log/solo:latest
     restart: always
     ports:
       - "8080:8080"
@@ -33,7 +33,7 @@ services:
       - "443:443"
     volumes:
       - "./nginx/conf:/etc/nginx/conf.d"
-      - "~/.acme.sh/liumapp.com:/etc/nginx/conf.d/liumapp.com"
+      - "~/.acme.sh/liumapp.com/:/etc/nginx/conf.d/liumapp.com"
       - "./nginx/www/:/var/www/"
 
 

@@ -14,7 +14,7 @@ services:
     command: --max_allowed_packet=32505856      
   solo:
     container_name: solo
-    image: b3log/solo
+    image: b3log/solo:latest
     restart: always
     ports:
       - "8080:8080"
