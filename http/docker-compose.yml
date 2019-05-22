@@ -6,12 +6,12 @@ services:
     image: mysql:5.5.60
     restart: always
     volumes:
-      - ./mysql/data:/var/lib/mysql
       - ./mysql/conf/mysqld.conf:/etc/mysql/mysql.conf.d/mysqld.cnf
     ports:
       - "6603:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=adminadmin
+    command: --max_allowed_packet=32505856      
   solo:
     container_name: solo
     image: b3log/solo

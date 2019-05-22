@@ -34,6 +34,41 @@ ssl证书我们选用let's encrypt证书，获取工具我们选用[acme.sh](htt
 
 关于acme.sh的下载和使用非常简单，官方[wiki](https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E)上有非常详细的介绍，这里不做多余赘述
 
+操作步骤：
+
+获取txt解析记录
+
+````shell
+~/.acme.sh/acme.sh --issue -d liumapp.com --dns --yes-I-know-dns-manual-mode-enough-go-ahead-please
+````
+
+请注意将域名换成您自己的
+
+没出意外，可以获取以下结果
+
+````shell
+[Wed May 22 16:28:54 CST 2019] Creating domain key
+[Wed May 22 16:28:54 CST 2019] The domain key is here: /root/.acme.sh/liumapp.com/liumapp.com.key
+[Wed May 22 16:28:54 CST 2019] Single domain='liumapp.com'
+[Wed May 22 16:28:54 CST 2019] Getting domain auth token for each domain
+[Wed May 22 16:28:56 CST 2019] Getting webroot for domain='liumapp.com'
+[Wed May 22 16:28:56 CST 2019] Add the following TXT record:
+[Wed May 22 16:28:56 CST 2019] Domain: '_acme-challenge.liumapp.com'
+[Wed May 22 16:28:56 CST 2019] TXT value: 'tzh7--4EldLpZUJlSAkxF6sZ63q7lxJdvnE2a-8IGF4'
+[Wed May 22 16:28:56 CST 2019] Please be aware that you prepend _acme-challenge. before your domain
+[Wed May 22 16:28:56 CST 2019] so the resulting subdomain will be: _acme-challenge.liumapp.com
+[Wed May 22 16:28:56 CST 2019] Please add the TXT records to the domains, and re-run with --renew.
+[Wed May 22 16:28:56 CST 2019] Please add '--debug' or '--log' to check more details.
+[Wed May 22 16:28:56 CST 2019] See: https://github.com/Neilpang/acme.sh/wiki/How-to-debug-acme.sh
+````
+
+然后设置自己域名DNS解析记录即可，解析完成后证书也随之生效（证书路径也在上述提示信息中）
+
+
+
+
+
+
 
 
 

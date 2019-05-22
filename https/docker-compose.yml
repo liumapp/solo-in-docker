@@ -7,11 +7,11 @@ services:
     restart: always
     volumes:
       - ./mysql/data:/var/lib/mysql
-      - ./mysql/conf/mysqld.conf:/etc/mysql/mysql.conf.d/mysqld.cnf
     ports:
       - "6603:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=adminadmin
+    command: --max_allowed_packet=32505856
   solo:
     container_name: solo
     image: b3log/solo
@@ -25,7 +25,17 @@ services:
       JDBC_DRIVER: "com.mysql.jdbc.Driver"
       JDBC_URL: "jdbc:mysql://mysql:3306/solo?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC"
     command: --listen_port=8080 --server_scheme=http --server_host=localhost
+  nginx: 
+    container_name: nginx
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./conf:/etc/nginx/conf.d"
+      - "~/.acme.sh/liumapp.com:/etc/nginx/conf.d/liumapp.com"
 
+      
 
 
 
