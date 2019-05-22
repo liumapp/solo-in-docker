@@ -36,6 +36,14 @@ ssl证书我们选用let's encrypt证书，获取工具我们选用[acme.sh](htt
 
 操作步骤：
 
+去https://dash.cloudflare.com/
+注册
+
+export CF_Email="liumapp.com@gmail.com"
+export CF_Key="meigui1994"
+/root/.acme.sh/acme.sh --issue --dns dns_cf -d liumapp.com -d www.liumapp.com
+
+
 获取txt解析记录
 
 ````shell
@@ -65,7 +73,7 @@ ssl证书我们选用let's encrypt证书，获取工具我们选用[acme.sh](htt
 然后设置自己域名DNS解析记录即可，解析完成后输入下列命令： 
 
 ````shell
-acme.sh --renew -d liumapp.com --yes-I-know-dns-manual-mode-enough-go-ahead-please
+acme.sh --renew -d liumapp.com -d www.liumapp.com --yes-I-know-dns-manual-mode-enough-go-ahead-please
 ````
 
 不出意外就能发现我们的let's encrypt证书申请成功：

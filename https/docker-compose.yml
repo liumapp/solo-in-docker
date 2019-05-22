@@ -24,7 +24,7 @@ services:
       JDBC_PASSWORD: "adminadmin"
       JDBC_DRIVER: "com.mysql.jdbc.Driver"
       JDBC_URL: "jdbc:mysql://mysql:3306/solo?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC"
-    command: --listen_port=8080 --server_scheme=http --server_host=localhost
+    command: --listen_port=8080 --server_port=80 --server_scheme=https --server_host=www.liumapp.com
   nginx: 
     container_name: nginx
     image: nginx:latest
