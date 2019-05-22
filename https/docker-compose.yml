@@ -34,8 +34,8 @@ services:
     volumes:
       - "./conf:/etc/nginx/conf.d"
       - "~/.acme.sh/liumapp.com:/etc/nginx/conf.d/liumapp.com"
+    
 
-      
 
 
 
