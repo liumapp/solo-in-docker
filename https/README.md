@@ -1,18 +1,47 @@
-# solo-in-docker
+# https
 
-> 一条命令在docker中启动solo，所有麻烦的配置全部用docker-compose编排解决。One simple command to starts solo in docker, with all troublesome configurations solved by docker-compose orchestration.
+> nginx部署let's encrypt证书，然后反向代理solo
 
-## 如何使用
+## 1. 前提准备
 
-* 确保系统环境具有docker + docker-compose
+### 1.1 安装docker
 
-    检查命令：
-    
-    ```
-    docker -v
-    docker-compose -v
-    ```
-    
+确保系统环境具有docker + docker-compose
+
+检查命令：
+
+  ```
+  docker -v
+  docker-compose -v
+  ```
+
+安装命令  :
+
+* CentOS: 
+
+  ````
+  yum install docker
+  yum install docker-compose
+  ````
+
+* MacOS:
+
+  请参考这篇博客：[MacOS安装docker](http://www.liumapp.com/articles/2017/12/27/1514347974172.html)      
+
+### 1.2 获取证书
+
+ssl证书我们选用let's encrypt证书，获取工具我们选用[acme.sh](https://github.com/Neilpang/acme.sh)
+
+关于acme.sh的下载和使用非常简单，官方[wiki](https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E)上有非常详细的介绍，这里不做多余赘述
+
+
+
+
+
+
+
+接下来我们
+
 * 配置docker-compose.yml文件，需要注意的事项已经全部//备注好了
 
     ````yaml
