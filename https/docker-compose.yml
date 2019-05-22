@@ -32,9 +32,9 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - "./conf:/etc/nginx/conf.d"
+      - "./nginx/conf:/etc/nginx/conf.d"
       - "~/.acme.sh/liumapp.com:/etc/nginx/conf.d/liumapp.com"
-    
+      - "./nginx/www:/etc/"
 
 
 
