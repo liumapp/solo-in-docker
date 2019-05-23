@@ -30,7 +30,7 @@
 
 ### 1.2 获取证书
 
-ssl证书一开始我打算选用let's encrypt证书（获取证书步骤请参考这里:[acme.sh获取Let's encrypt证书](https://www.liumapp.com/articles/2019/05/23/1558574698880.html)），但经过实际测试发现，如果域名不绑定在cloudflare提供的DNS解析服务地址上，浏览器会提示证书是不可信的，所以最后还是选择了赛门铁克的证书
+ssl证书一开始我打算选用let's encrypt证书（获取证书步骤请参考这里:[acme.sh获取Let's encrypt证书](https://www.liumapp.com/articles/2019/05/23/1558574698880.html)，或者直接使用certbot），但我最后还是选择了赛门铁克的证书...
 
 证书获取非常简单，步骤省略，请您自行获取，然后将证书文件拷贝到服务器的/root/cert/目录下（其他目录也行，换目录的请自行修改nginx.conf跟docker-compose.yml文件，确保nginx知道证书在哪）
 
