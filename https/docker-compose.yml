@@ -28,12 +28,13 @@ services:
   nginx: 
     container_name: nginx
     image: nginx:latest
+    restart: always
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - "./nginx/conf:/etc/nginx/conf.d"
-      - "~/.acme.sh/liumapp.com/:/etc/nginx/conf.d/liumapp.com"
+      - "/root/cert/:/etc/nginx/conf.d/liumapp.com"
       - "./nginx/www/:/var/www/"
 
 
