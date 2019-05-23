@@ -30,83 +30,11 @@
 
 ### 1.2 获取证书
 
-ssl证书我们选用let's encrypt证书，获取工具我们选用[acme.sh](https://github.com/Neilpang/acme.sh)
+ssl证书一开始我打算选用let's encrypt证书（获取证书步骤请参考这里:[acme.sh获取Let's encrypt证书](https://www.liumapp.com/articles/2019/05/23/1558574698880.html)），但经过实际测试发现，如果域名不绑定在cloudflare提供的DNS解析服务地址上，浏览器会提示证书是不可信的，所以最后还是选择了赛门铁克的证书
 
-关于acme.sh的下载和使用非常简单，官方[wiki](https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E)上有非常详细的介绍，这里不做多余赘述
+证书获取非常简单，步骤省略，请您自行获取，然后将证书文件拷贝到服务器的/root/cert/目录下（其他目录也行，换目录的请自行修改nginx.conf跟docker-compose.yml文件，确保nginx知道证书在哪）
 
-操作步骤：
-
-去https://dash.cloudflare.com/
-注册
-
-export CF_Email="liumapp.com@gmail.com"
-export CF_Key="meigui1994"
-/root/.acme.sh/acme.sh --issue --dns dns_cf -d liumapp.com -d www.liumapp.com
-
-
-获取txt解析记录
-
-````shell
-~/.acme.sh/acme.sh --issue -d liumapp.com --dns --yes-I-know-dns-manual-mode-enough-go-ahead-please
-````
-
-请注意将域名换成您自己的
-
-没出意外，可以获取以下结果
-
-````shell
-[Wed May 22 16:28:54 CST 2019] Creating domain key
-[Wed May 22 16:28:54 CST 2019] The domain key is here: /root/.acme.sh/liumapp.com/liumapp.com.key
-[Wed May 22 16:28:54 CST 2019] Single domain='liumapp.com'
-[Wed May 22 16:28:54 CST 2019] Getting domain auth token for each domain
-[Wed May 22 16:28:56 CST 2019] Getting webroot for domain='liumapp.com'
-[Wed May 22 16:28:56 CST 2019] Add the following TXT record:
-[Wed May 22 16:28:56 CST 2019] Domain: '_acme-challenge.liumapp.com'
-[Wed May 22 16:28:56 CST 2019] TXT value: 'tzh7--4EldLpZUJlSAkxF6sZ63q7lxJdvnE2a-8IGF4'
-[Wed May 22 16:28:56 CST 2019] Please be aware that you prepend _acme-challenge. before your domain
-[Wed May 22 16:28:56 CST 2019] so the resulting subdomain will be: _acme-challenge.liumapp.com
-[Wed May 22 16:28:56 CST 2019] Please add the TXT records to the domains, and re-run with --renew.
-[Wed May 22 16:28:56 CST 2019] Please add '--debug' or '--log' to check more details.
-[Wed May 22 16:28:56 CST 2019] See: https://github.com/Neilpang/acme.sh/wiki/How-to-debug-acme.sh
-````
-
-然后设置自己域名DNS解析记录即可，解析完成后输入下列命令： 
-
-````shell
-acme.sh --renew -d liumapp.com -d www.liumapp.com --yes-I-know-dns-manual-mode-enough-go-ahead-please
-````
-
-不出意外就能发现我们的let's encrypt证书申请成功：
-
-````
-[Wed May 22 19:35:03 CST 2019] Renew: 'liumapp.com'
-[Wed May 22 19:35:03 CST 2019] Single domain='liumapp.com'
-[Wed May 22 19:35:03 CST 2019] Getting domain auth token for each domain
-[Wed May 22 19:35:03 CST 2019] Verifying: liumapp.com
-[Wed May 22 19:35:07 CST 2019] Success
-[Wed May 22 19:35:07 CST 2019] Verify finished, start to sign.
-[Wed May 22 19:35:08 CST 2019] Lets finalize the order, Le_OrderFinalize: https://acme-v02.api.letsencrypt.org/acme/finalize/57574781/464831689
-[Wed May 22 19:35:10 CST 2019] Download cert, Le_LinkCert: https://acme-v02.api.letsencrypt.org/acme/cert/0356fc3fb0ba8c23ad634af914a823e9fa37
-[Wed May 22 19:35:10 CST 2019] Cert success.
-...
-[Wed May 22 19:35:10 CST 2019] Your cert is in  /root/.acme.sh/liumapp.com/liumapp.com.cer 
-[Wed May 22 19:35:10 CST 2019] Your cert key is in  /root/.acme.sh/liumapp.com/liumapp.com.key 
-[Wed May 22 19:35:10 CST 2019] The intermediate CA cert is in  /root/.acme.sh/liumapp.com/ca.cer 
-[Wed May 22 19:35:10 CST 2019] And the full chain certs is there:  /root/.acme.sh/liumapp.com/fullchain.cer
-````
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 2. 修改配置文件
 
 
 
