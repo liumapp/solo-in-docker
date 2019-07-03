@@ -5,10 +5,10 @@ services:
     container_name: mysql
     image: mysql:5.5.60
     restart: always
-    volumes:
-      - ./mysql/conf/mysqld.conf:/etc/mysql/mysql.conf.d/mysqld.cnf
     ports:
       - "6603:3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=adminadmin
     command: --max_allowed_packet=32505856      
