@@ -10,7 +10,7 @@ services:
     volumes:
       - ./mysql/data:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=adminadmin
+      MYSQL_ROOT_PASSWORD: "adminadmin"
     command: --max_allowed_packet=32505856      
   solo:
     container_name: solo

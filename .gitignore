@@ -29,3 +29,9 @@ target
 .DS_Store
 
 json
+
+*.frm
+
+ib_logfile0
+
+ibdata1
