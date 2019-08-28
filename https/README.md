@@ -71,7 +71,7 @@ services:
     image: mysql:5.5.60
     restart: always
     volumes:
-      - ./mysql/conf/mysqld.conf:/etc/mysql/mysql.conf.d/mysqld.cnf //mysql的配置文件存放地址
+      - ./mysql/data:/var/lib/mysql //mysql的数据文件存放地址
     ports:
       - "6603:3306" //6603代表宿主机端口，3306代编容器的端口
     environment:
