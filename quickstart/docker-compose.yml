@@ -18,7 +18,7 @@ services:
     command: --listen_port=8080 --server_port=80 --server_scheme=https --server_host=solo.mufengs.com
   nginx: 
     container_name: caddy
-    image: caddy:latest
+    image: caddy/caddy:latest
     restart: always
     environment:
       CLOUDFLARE_API_KEY: "246bed6cc9a0553a5f32be38b105926db0ad9"
