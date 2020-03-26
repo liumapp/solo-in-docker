@@ -1,0 +1,32 @@
+version: "2"
+
+services:
+  solo:
+    container_name: solo
+    image: b3log/solo:latest
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/root/solo_h2/:/opt/solo/h2/"
+    environment:
+      RUNTIME_DB: "H2"
+      JDBC_USERNAME: "root"
+      JDBC_PASSWORD: "123456"
+      JDBC_DRIVER: "org.h2.Driver"
+      JDBC_URL: "jdbc:h2:/opt/solo/h2/db;MODE=MYSQL"
+    command: --listen_port=8080 --server_port=80 --server_scheme=https --server_host=solo.mufengs.com
+  nginx: 
+    container_name: caddy
+    image: caddy:latest
+    restart: always
+    environment:
+      CLOUDFLARE_API_KEY: "246bed6cc9a0553a5f32be38b105926db0ad9"
+      CLOUDFLARE_EMAI: "mufeng5619@gmail.com"
+
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./caddy/conf/Caddyfile:/etc/caddy/Caddyfile"
+      - "./www:/data"

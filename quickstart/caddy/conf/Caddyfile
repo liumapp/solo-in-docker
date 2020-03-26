@@ -1,0 +1,32 @@
+http://solo.mufengs.com
+{
+  header / {
+    Strict-Transport-Security "max-age=31536000;"
+    X-XSS-Protection "1; mode=block"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "DENY"
+  }
+  redir https://blog.mufengs.com{url}
+}
+https://solo.mufengs.com
+{
+header / {
+	Strict-Transport-Security "max-age=31536000;"
+	X-XSS-Protection "1; mode=block"
+	X-Content-Type-Options "nosniff"
+	X-Frame-Options "DENY"
+}
+        gzip   #开启gzip压缩
+        log /root/www/access.log   #访问日志的配置
+        errors  /root/www/error.log
+
+tls {
+    dns cloudflare
+}
+	proxy / http://127.0.0.1:8080 {   #反向代理到82端口x
+		header_upstream Host {host}
+                header_upstream X-Real-IP {remote}
+                header_upstream X-Forwarded-For {remote}
+                header_upstream X-Forwarded-Proto {scheme}
+	}
+}
