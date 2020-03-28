@@ -14,5 +14,5 @@
 
 ## 4. 成功案例
 
-* https://solo.mufeng.com
+* https://solo.mufengs.com
 

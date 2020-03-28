@@ -128,7 +128,7 @@ services:
     ```
 ## 效果展示
 
-https://solo.liumapp.com    
+https://solo.mufengs.com    
 
 ## 注意事项
 
