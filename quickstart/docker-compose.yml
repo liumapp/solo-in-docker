@@ -16,13 +16,13 @@ services:
       JDBC_DRIVER: "org.h2.Driver"
       JDBC_URL: "jdbc:h2:/opt/solo/h2/db;MODE=MYSQL"
     command: --listen_port=8080 --server_port=80 --server_scheme=https --server_host=solo.mufengs.com
-  nginx: 
+  caddy:
     container_name: caddy
-    image: caddy/caddy:latest
+    image: mufeng5619/caddy:latest
     restart: always
     environment:
-      CLOUDFLARE_API_KEY: "246bed6cc9a0553a5f32be38b105926db0ad9"
-      CLOUDFLARE_EMAI: "mufeng5619@gmail.com"
+      CLOUDFLARE_API_KEY: "be38b105926db0ad9"
+      CLOUDFLARE_EMAIL: "mufen@gmail.com"
 
     ports:
       - "80:80"

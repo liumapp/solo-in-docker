@@ -28,6 +28,12 @@
 
   请参考这篇博客：[MacOS安装docker](http://www.liumapp.com/articles/2017/12/27/1514347974172.html)      
 
+### 自行编译caddy1
+
+curl https://getcaddy.com | bash -s personal consul,dns,hook.service,http.authz,http.cache,http.cgi,http.cors,http.datadog,http.expires,http.filter,http.forwardproxy,http.geoip,http.git,http.gopkg,http.grpc,http.ipfilter,http.jwt,http.locale,http.login,http.mailout,http.minify,http.nobots,http.permission,http.prometheus,http.proxyprotocol,http.pubsub,http.ratelimit,http.realip,http.reauth,http.recaptcha,http.restic,http.s3browser,http.supervisor,http.torproxy,http.webdav,net,redis,supervisor,tls.dns.cloudflare
+
+/usr/local/bin/caddy
+
 ### 1.2 获取证书
 
 ssl证书一开始我打算选用let's encrypt证书（获取证书步骤请参考这里:[acme.sh获取Let's encrypt证书](https://www.liumapp.com/articles/2019/05/23/1558574698880.html)，或者直接使用certbot），但我最后还是选择了赛门铁克的证书...
