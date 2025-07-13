@@ -68,7 +68,7 @@ version: "2"
 services:
   mysql:
     container_name: mysql
-    image: mysql:5.5.60
+    image: mysql:8.0.42
     restart: always
     volumes:
       - ./mysql/data:/var/lib/mysql //mysql的数据文件存放地址

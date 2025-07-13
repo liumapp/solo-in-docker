@@ -3,7 +3,7 @@ version: "2"
 services:
   mysql:
     container_name: mysql
-    image: mysql:5.5.60
+    image: mysql:修改mysql版本为最新的lts
     restart: always
     ports:
       - "6603:3306"
